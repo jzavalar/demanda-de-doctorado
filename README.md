@@ -1,18 +1,22 @@
-# Datos y Scripts de Procesamiento para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
+### Datos y Scripts de Procesamiento 
+### para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
 
 **Institución responsable:** Colegio de Postgraduados, Campus Córdoba  
+**Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal
+**Contacto:*** [obduliabb@colpos.mx](mailto:obduliabb@colpos.mx)  
+**Responsable del repositorio y sus productos:** Dr. Jesús Zavala Ruiz  
+**Contacto:*** [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)  
+
 **Periodo de levantamiento:** 4 de abril de 2024 – 7 de mayo de 2024  
 **N total de respuestas:** 113 (100 con interés declarado en cursar el doctorado)  
 **Licencia:** [CC BY 4.0](LICENSE.txt)  
 **Última actualización de este repositorio:** 23 de julio de 2026  
-**Responsable de este repositorio:** dr. Jesús Zavala Ruiz  
-**Contacto:*** [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)  
 
 > Este repositorio acompaña al artículo derivado de esta investigación y se publica para dar cumplimiento a la transparencia de datos, métodos y materiales solicitada por la revista de destino, y para que cualquier persona pueda **reproducir de principio a fin** el proceso de preparación de los datos, previo a su análisis y su posterior análisis.
 
 ---
 
-## 1. Contenido del repositorio
+#### 1. Contenido del repositorio
 
 Todos los archivos de datos y de código siguen la nomenclatura `datos_NN.nombre-descriptivo.ext`,
 numerados en el orden lógico del flujo de trabajo (00 = insumos de origen → 08 = trazabilidad
@@ -39,7 +43,7 @@ despliegan de forma especial en esa forma exacta.
 | 09 | [`datos_09.instalar-entorno-fedora.sh`](datos_09.instalar-entorno-fedora.sh) | Script de instalación automatizada del entorno (R + RStudio vía Copr `iucar/rstudio`), a prueba de fallas, para Fedora Linux 44 | Bash |
 | — | [`LICENSE.txt`](LICENSE.txt) | Licencia y forma de citar el conjunto de datos | Texto plano |
 
-## 2. El instrumento
+#### 2. El instrumento
 
 El cuestionario (`datos_00.instrumento-cuestionario.*`) se aplicó en línea (Google Forms) y
 consta de 10 preguntas: interés e línea de doctorado, género, edad por rangos, entidad de
@@ -48,7 +52,7 @@ plazo estimado para iniciar el doctorado. El detalle pregunta-por-pregunta y una
 una diferencia menor entre el documento y el formulario en línea están en la transcripción
 Markdown.
 
-## 3. Proceso de limpieza de datos (2 pasos)
+#### 3. Proceso de limpieza de datos (2 pasos)
 
 El script `datos_03.limpieza-datos.R` implementa el criterio acordado con el equipo de
 investigación: **estandarizar sin perder significado ni riqueza de la información**.
@@ -79,7 +83,7 @@ coautores) y `.rds` (formato nativo de R, conserva los tipos de dato exactos).
 El detalle completo de cada hallazgo de la auditoría y su resolución está en
 [`datos_07.reporte-validacion-limpieza.md`](datos_07.reporte-validacion-limpieza.md).
 
-## 4. Hallazgos principales (resumen)
+#### 4. Hallazgos principales (resumen)
 
 | Hallazgo | Resolución |
 |---|---|
@@ -93,7 +97,7 @@ El detalle completo de cada hallazgo de la auditoría y su resolución está en
 Ningún hallazgo implicó pérdida de registros: las 113 respuestas se conservan íntegras en
 todo el proceso (verificado automáticamente por el script).
 
-## 5. Diccionario de datos
+#### 5. Diccionario de datos
 
 `datos_06.diccionario-datos.xlsx` contiene 5 hojas:
 
@@ -107,9 +111,9 @@ todo el proceso (verificado automáticamente por el script).
    residencia).
 6. **Estadisticas_Descriptivas** — frecuencias y porcentajes por variable, listas para citar.
 
-## 6. Cómo reproducir el entorno y la limpieza de datos desde cero
+#### 6. Cómo reproducir el entorno y la limpieza de datos desde cero
 
-### 6.1 Preparar el entorno (nueva máquina, Windows 11, Ubuntu 24 o Fedora 44)
+##### 6.1 Preparar el entorno (nueva máquina, Windows 11, Ubuntu 24 o Fedora 44)
 
 Para dejar instalado R y todos los paquetes necesarios de forma automatizada y a prueba de
 fallas:
@@ -141,10 +145,11 @@ momento), el script lo reporta como `[AVISO]` y continúa: RStudio no es necesar
 manual paso a paso y una tabla de solución de fallas están en
 [`datos_09.instrucciones-entorno-windows-linux.md`](datos_09.instrucciones-entorno-windows-linux.md).
 
-### 6.2 Ejecutar la limpieza de datos
+##### 6.2 Ejecutar la limpieza de datos
 
 ```r
 # 1. Clonar o descargar este repositorio completo en una sola carpeta
+
 # 2. Abrir R o RStudio y fijar el directorio de trabajo a esa carpeta:
 setwd("ruta/a/este/repositorio")
 
@@ -158,31 +163,28 @@ source("datos_03.limpieza-datos.R")
 Requisitos: **R ≥ 4.3**. Los paquetes necesarios (`readxl`, `stringr`, `dplyr`, `writexl`,
 `openxlsx`, `stringi`) se instalan automáticamente si faltan. El script:
 
-- Lee `datos_01.datos-brutos-cuestionario.xlsx` y `datos_02.catalogo-estandarizacion-entidades.csv`.
-- Genera (o sobrescribe) `datos_04.datos-limpios-completos.*`, `datos_05.datos-interesados.*`
-  y `datos_08.sesion-r-reproducibilidad.txt`.
-- Se detiene con un mensaje explícito ante cualquier error (columnas faltantes, archivo
-  corrupto, pérdida de registros), en vez de fallar en silencio.
-- Al terminar exitosamente imprime un reporte con conteos totales, valores `NA` por variable
-  y las respuestas libres preservadas en las columnas `..._otro_texto`.
+- Lee `datos_01.datos-brutos-cuestionario.xlsx` y `datos_02.catalogo-estandarizacion-entidades.csv`.  
+- Genera (o sobrescribe) `datos_04.datos-limpios-completos.*`, `datos_05.datos-interesados.*` y `datos_08.sesion-r-reproducibilidad.txt`.
+- Se detiene con un mensaje explícito ante cualquier error (columnas faltantes, archivo corrupto, pérdida de registros), en vez de fallar en silencio.  
+- Al terminar exitosamente imprime un reporte con conteos totales, valores `NA` por variable y las respuestas libres preservadas en las columnas `..._otro_texto`.  
 
 Para verificar bajo qué versión exacta de R y de cada paquete se generaron los archivos aquí
 publicados, ver `datos_08.sesion-r-reproducibilidad.txt` (se regenera cada vez que se corre
 el script, con fecha y hora de ejecución).
 
-## 7. Privacidad
+#### 7. Privacidad
 
 El conjunto de datos no contiene nombres, correos electrónicos ni identificadores directos de
 las personas respondientes; solo variables demográficas agregadas por rango (edad) y categoría
 (género, entidad, situación laboral). No se identificó riesgo de reidentificación relevante
 para su publicación en acceso abierto.
 
-## 8. Licencia y forma de citar
+#### 8. Licencia y forma de citar
 
 Ver [`LICENSE.txt`](LICENSE.txt). Este material se distribuye bajo **CC BY 4.0**, en
 concordancia con la política de acceso abierto de la revista de destino: [RIDE](https://www.ride.org.mx/).
 
-## 9. Historial de versiones
+#### 9. Historial de versiones
 
 | Fecha | Cambio |
 |---|---|
