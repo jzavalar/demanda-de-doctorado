@@ -1,7 +1,7 @@
 ### Datos y Scripts de Procesamiento para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
 
 **Institución responsable:** Colegio de Postgraduados, Campus Córdoba  
-**Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal
+**Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal  
 **Contacto:*** [obduliabb@colpos.mx](mailto:obduliabb@colpos.mx)  
 **Responsable del repositorio y sus productos:** Dr. Jesús Zavala Ruiz  
 **Contacto:*** [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)  
