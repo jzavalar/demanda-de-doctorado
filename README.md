@@ -44,12 +44,12 @@ despliegan de forma especial en esa forma exacta.
 
 #### 2. El instrumento
 
-El cuestionario (`datos_00.instrumento-cuestionario.*`) se aplicó en línea (Google Forms) y
+El cuestionario ([`datos_00.instrumento-cuestionario.docx`](datos_00.instrumento-cuestionario.docx)) se aplicó en línea (Google Forms) y
 consta de 10 preguntas: interés e línea de doctorado, género, edad por rangos, entidad de
 estudios y de residencia, maestría e institución de origen, situación laboral, motivación y
 plazo estimado para iniciar el doctorado. El detalle pregunta-por-pregunta y una nota sobre
 una diferencia menor entre el documento y el formulario en línea están en la transcripción
-Markdown.
+Markdown ([`datos_00.instrumento-cuestionario.md`](datos_00.instrumento-cuestionario.md)).
 
 #### 3. Proceso de limpieza de datos (2 pasos)
 
