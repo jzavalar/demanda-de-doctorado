@@ -1,17 +1,17 @@
 ### Datos y Scripts de Procesamiento para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
 
+> Este repositorio acompaña al artículo derivado de esta investigación y se publica para dar cumplimiento a la transparencia de datos, métodos y materiales solicitada por la revista de destino, y para que cualquier persona pueda **reproducir de principio a fin** el proceso de preparación de los datos, previo a su análisis y su posterior análisis.
+
 **Institución responsable:** Colegio de Postgraduados, Campus Córdoba  
 **Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal  
 **Contacto:*** [obduliabb@colpos.mx](mailto:obduliabb@colpos.mx)  
 **Responsable del repositorio y sus productos:** Dr. Jesús Zavala Ruiz  
 **Contacto:*** [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)  
 
-**Periodo de levantamiento:** 4 de abril de 2024 – 7 de mayo de 2024  
+**Periodo de levantamiento de datos:** 4 de abril de 2024 – 7 de mayo de 2024  
 **N total de respuestas:** 113 (100 con interés declarado en cursar el doctorado)  
 **Licencia:** [CC BY 4.0](LICENSE.txt)  
 **Última actualización de este repositorio:** 23 de julio de 2026  
-
-> Este repositorio acompaña al artículo derivado de esta investigación y se publica para dar cumplimiento a la transparencia de datos, métodos y materiales solicitada por la revista de destino, y para que cualquier persona pueda **reproducir de principio a fin** el proceso de preparación de los datos, previo a su análisis y su posterior análisis.
 
 ---
 
