@@ -1,11 +1,11 @@
-# Datos y Scripts de Procesamiento: Artículo: Demanda Potencial para un Doctorado en Ciencias
-### Paisaje y turismo rural · desarrollo, manejo y aprovechamiento del paisaje rural
+# Datos y Scripts de Procesamiento para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
 
 **Institución responsable:** Colegio de Postgraduados, Campus Córdoba
 **Periodo de levantamiento:** 4 de abril de 2024 – 7 de mayo de 2024
 **N total de respuestas:** 113 (100 con interés declarado en cursar el doctorado)
 **Licencia:** [CC BY 4.0](LICENSE.txt)
 **Última actualización de este repositorio:** 23 de julio de 2026
+**Responsable de este repositorio:** dr. Jesús Zavala Ruiz [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)
 
 > Este repositorio acompaña al artículo derivado de esta investigación y se publica para dar
 > cumplimiento a la transparencia de datos, métodos y materiales solicitada por la revista
