@@ -33,13 +33,13 @@ despliegan de forma especial en esa forma exacta.
 | 03 | [`datos_03.limpieza-datos.R`](datos_03.limpieza-datos.R) | **Script de limpieza y estandarización**, comentado y automatizado en 3 pasos | R |
 | 04 | [`datos_04.datos-limpios-completos.csv`](datos_04.datos-limpios-completos.csv) · [`.xlsx`](datos_04.datos-limpios-completos.xlsx) · [`.rds`](datos_04.datos-limpios-completos.rds) | Datos limpios, las 113 respuestas | CSV / Excel / R nativo |
 | 05 | [`datos_05.datos-interesados.csv`](datos_05.datos-interesados.csv) · [`.rds`](datos_05.datos-interesados.rds) | Subconjunto de 04 filtrado a `interes_en_doctorado = "Sí"` (100 respuestas) | CSV / R nativo |
-| 06 | [`datos_06.diccionario-datos.xlsx`](datos_06.diccionario-datos.xlsx) | **Diccionario de datos completo**: variables, codebook de recodificación, estadísticas descriptivas | Excel (5 hojas) |
+| 06 | [`datos_06.diccionario-datos.xlsx`](datos_06.diccionario-datos.xlsx) | **Diccionario de datos completo**: variables, recodificación, estadísticas descriptivas | Excel (5 hojas) |
 | 07 | [`datos_07.reporte-validacion-limpieza.md`](datos_07.reporte-validacion-limpieza.md) | Reporte de auditoría del proceso de limpieza: hallazgos y su resolución | Markdown |
 | 08 | [`datos_08.sesion-r-reproducibilidad.txt`](datos_08.sesion-r-reproducibilidad.txt) | Versión de R y de cada paquete usada para generar los archivos (se genera automáticamente al correr el script) | Texto plano |
-| 09 | [`datos_09.instrucciones-entorno-windows-linux.md`](datos_09.instrucciones-entorno-windows-linux.md) | Instrucciones para reproducir el entorno de R **y de RStudio Desktop** en Windows 11, Ubuntu 24 y Fedora 44 (manual y automatizado, con solución de fallas) | Markdown |
-| 09 | [`datos_09.instalar-entorno-windows.ps1`](datos_09.instalar-entorno-windows.ps1) | Script de instalación automatizada del entorno (R + RStudio vía winget, con respaldo de descarga directa), a prueba de fallas, para Windows 11 | PowerShell |
-| 09 | [`datos_09.instalar-entorno-ubuntu.sh`](datos_09.instalar-entorno-ubuntu.sh) | Script de instalación automatizada del entorno (R + RStudio), a prueba de fallas, para Ubuntu 24.04 LTS | Bash |
-| 09 | [`datos_09.instalar-entorno-fedora.sh`](datos_09.instalar-entorno-fedora.sh) | Script de instalación automatizada del entorno (R + RStudio vía Copr `iucar/rstudio`), a prueba de fallas, para Fedora Linux 44 | Bash |
+| 09 | [`datos_09.instrucciones-entorno-windows-linux.md`](datos_09.instrucciones-entorno-windows-linux.md) | Instrucciones para reproducir el entorno de **R** y de **RStudio Desktop** en **Windows 11**, **Ubuntu Linux 24** y **Fedora Linux 44** (manual y automatizado, con solución de fallas) | Markdown |
+| 09 | [`datos_09.instalar-entorno-windows.ps1`](datos_09.instalar-entorno-windows.ps1) | Script de instalación automatizada del entorno (R + RStudio vía winget, con respaldo de descarga directa), a prueba de fallas, para **Windows 11** | PowerShell |
+| 09 | [`datos_09.instalar-entorno-ubuntu.sh`](datos_09.instalar-entorno-ubuntu.sh) | Script de instalación automatizada del entorno (R + RStudio), a prueba de fallas, para **Ubuntu 24.04 LTS** | Bash |
+| 09 | [`datos_09.instalar-entorno-fedora.sh`](datos_09.instalar-entorno-fedora.sh) | Script de instalación automatizada del entorno (R + RStudio vía Copr `iucar/rstudio`), a prueba de fallas, para **Fedora Linux 44** | Bash |
 | — | [`LICENSE.txt`](LICENSE.txt) | Licencia y forma de citar el conjunto de datos | Texto plano |
 
 #### 2. El instrumento
