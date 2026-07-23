@@ -1,0 +1,18 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Este conjunto de datos, el instrumento de levantamiento, el script de limpieza y su
+documentación se distribuyen bajo la licencia CC BY 4.0.
+
+Se permite copiar, redistribuir, adaptar y usar el material para cualquier fin, incluso
+comercial, siempre que se otorgue el crédito correspondiente, se indique si se realizaron
+cambios y se enlace a la licencia.
+
+Texto completo de la licencia: https://creativecommons.org/licenses/by/4.0/deed.es
+
+Cómo citar este conjunto de datos:
+[Autoría, Año]. Datos de demanda potencial para un Doctorado en Ciencias (paisaje y turismo
+rural, desarrollo, manejo y aprovechamiento del paisaje rural) [Conjunto de datos].
+Universidad Autónoma Metropolitana. [DOI o URL del repositorio a completar al depositar].
+
+Esta licencia es coherente con la política de acceso abierto de la revista de destino
+(adherida a la Iniciativa de Budapest).

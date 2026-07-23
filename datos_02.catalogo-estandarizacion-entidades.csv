@@ -1,0 +1,38 @@
+valor_crudo,valor_estandarizado,tipo_correccion,justificacion
+Aguascalientes,Aguascalientes,sin cambio,
+Baja California Sur,Baja California Sur,sin cambio,
+CDMX,Ciudad de México,expansión de sigla,Se usa el nombre oficial completo de la entidad
+Chiapas,Chiapas,sin cambio,
+Chihuahua,Chihuahua,sin cambio,
+Coahuila,Coahuila,sin cambio,
+Colima,Colima,sin cambio,
+Durango,Durango,sin cambio (espacios recortados),
+"Durango ",Durango,espacio final,Recorte de espacio en blanco al final del valor
+"Estado de México",Estado de México,sin cambio (espacios recortados),
+"Estado de México ",Estado de México,espacio final,Recorte de espacio en blanco al final del valor
+Guanajuato,Guanajuato,sin cambio,
+Hidalgo,Hidalgo,sin cambio,
+Jalisco,Jalisco,sin cambio (espacios recortados),
+"Jalisco ",Jalisco,espacio final,Recorte de espacio en blanco al final del valor
+México,Estado de México,corrección de ambigüedad,"Decisión editorial: en el registro donde aparece, estado_estudios = 'Estado de México' para la misma persona; se interpreta como referencia abreviada a esa entidad, no a Ciudad de México ni al país. Documentado como decisión, no como corrección automática por patrón."
+Michoacán,Michoacán,sin cambio (espacios recortados),
+"Michoacán ",Michoacán,espacio final,Recorte de espacio en blanco al final del valor
+Michoacan,Michoacán,acento faltante,Normalización Unicode / acentuación
+Morelos,Morelos,sin cambio,
+Nayarit,Nayarit,sin cambio,
+"Nuevo León",Nuevo León,sin cambio (espacios recortados),
+"Nuevo León ",Nuevo León,espacio final,Recorte de espacio en blanco al final del valor
+Puebla,Puebla,sin cambio (espacios recortados),
+"Puebla ",Puebla,espacio final,Recorte de espacio en blanco al final del valor
+Querétaro,Querétaro,sin cambio,
+"San Luis Potosí",San Luis Potosí,sin cambio (espacios recortados),
+"San Luis Potosí ",San Luis Potosí,espacio final,Recorte de espacio en blanco al final del valor
+Sinaloa,Sinaloa,sin cambio (espacios recortados),
+"Sinaloa ",Sinaloa,espacio final,Recorte de espacio en blanco al final del valor
+Sonora,Sonora,sin cambio,
+Tabasco,Tabasco,sin cambio (espacios recortados),
+"Tabasco ",Tabasco,espacio final,Recorte de espacio en blanco al final del valor
+Tlaxcala,Tlaxcala,sin cambio (espacios recortados),
+"Tlaxcala ",Tlaxcala,espacio final,Recorte de espacio en blanco al final del valor
+Veracruz,Veracruz,sin cambio,
+USA,Estados Unidos de América (residencia en el extranjero),caso legítimo fuera del catálogo,"No es error: la persona reside fuera de México. Se conserva como categoría propia, no se fuerza al catálogo de 32 entidades."
