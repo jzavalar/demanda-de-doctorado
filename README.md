@@ -1,6 +1,4 @@
-### Datos y Scripts de Procesamiento
-### para el Artículo 
-### *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
+### Datos y Scripts de Procesamiento para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
 
 **Institución responsable:** Colegio de Postgraduados, Campus Córdoba  
 **Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal
