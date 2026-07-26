@@ -1,12 +1,12 @@
 # Datos y Scripts de Procesamiento para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
 
-**Institución responsable:** Colegio de Postgraduados, Campus Córdoba
-**Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal — [obduliabb@colpos.mx](mailto:obduliabb@colpos.mx)
-**Responsable del repositorio y sus productos:** Dr. Jesús Zavala Ruiz — [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)
-**Periodo de levantamiento:** 4 de abril de 2024 – 7 de mayo de 2024
-**N total de respuestas:** 113 (100 con interés declarado en cursar el doctorado)
-**Licencia:** [CC BY 4.0](LICENSE.txt)
-**Última actualización de este repositorio:** 23 de julio de 2026
+**Institución responsable:** Colegio de Postgraduados, Campus Córdoba  
+**Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal — [obduliabb@colpos.mx](mailto:obduliabb@colpos.mx)  
+**Responsable del repositorio y sus productos:** Dr. Jesús Zavala Ruiz — [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)  
+**Periodo de levantamiento:** 4 de abril de 2024 – 7 de mayo de 2024  
+**N total de respuestas:** 113 (100 con interés declarado en cursar el doctorado)  
+**Licencia:** [CC BY 4.0](LICENSE.txt)  
+**Última actualización de este repositorio:** 23 de julio de 2026  
 
 > Este repositorio acompaña al artículo derivado de esta investigación y se publica para dar
 > cumplimiento a la transparencia de datos, métodos y materiales solicitada por la revista de
@@ -32,7 +32,7 @@ despliegan de forma especial en esa forma exacta.
 | 01 | [`datos_01.datos-brutos-cuestionario.csv`](datos_01.datos-brutos-cuestionario.csv) | Mismo contenido que el anterior, en texto plano UTF-8 | CSV |
 | 02 | [`datos_02.catalogo-estandarizacion-entidades.csv`](datos_02.catalogo-estandarizacion-entidades.csv) | Tabla de equivalencias auditable para nombres de entidades federativas (acentos, espacios, casos ambiguos) usada por el script de limpieza | CSV |
 | 03 | [`datos_03.limpieza-datos.R`](datos_03.limpieza-datos.R) | **Script de limpieza y estandarización**, comentado y automatizado en 3 pasos | R |
-| 04 | [`datos_04.datos-limpios-completos.csv`](datos_04.datos-limpios-completos.csv) · [`.xlsx`](datos_04.datos-limpios-completos.xlsx) · [`.rds`](datos_04.datos-limpios-completos.rds) | Datos limpios, las 113 respuestas | CSV / Excel / R nativo |
+| 04 | [`datos_04.datos-limpios-completos.csv`](datos_04.datos-limpios-completos.csv) · [`.xlsx`](datos_04.datos-limpios-completos.xlsx) · [`.rds`](datos_04.datos-limpios-completos.rds) | Datos limpios, las  113 respuestas | CSV / Excel / R nativo |
 | 05 | [`datos_05.datos-interesados.csv`](datos_05.datos-interesados.csv) · [`.rds`](datos_05.datos-interesados.rds) | Subconjunto de 04 filtrado a `interes_en_doctorado = "Sí"` (100 respuestas) | CSV / R nativo |
 | 06 | [`datos_06.diccionario-datos.xlsx`](datos_06.diccionario-datos.xlsx) | **Diccionario de datos completo**: variables, codebook de recodificación, estadísticas descriptivas | Excel (5 hojas) |
 | 07 | [`datos_07.reporte-validacion-limpieza.md`](datos_07.reporte-validacion-limpieza.md) | Reporte de auditoría del proceso de limpieza: hallazgos y su resolución | Markdown |
