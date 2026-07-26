@@ -107,10 +107,8 @@ mapa_coropletico <- function(datos, variable, etiqueta_leyenda, archivo, titulo_
     geom_sf(aes(fill = n), color = "white", linewidth = 0.15) +
     scale_fill_gradient(low = "#D9E2F3", high = "#1F3864", name = etiqueta_leyenda,
                          breaks = scales::pretty_breaks()) +
-    labs(title = titulo_interno) +
     theme_void(base_size = 11) +
-    theme(plot.title = element_text(face = "bold", size = 11, hjust = 0.5),
-          legend.position = "right")
+    theme(legend.position = "right")
 
   ggsave(file.path(dir_figuras, archivo), p, width = 7, height = 5.5, dpi = 300, bg = "white")
   geo_join %>% st_drop_geometry() %>% select(entidad, n) %>% arrange(desc(n))

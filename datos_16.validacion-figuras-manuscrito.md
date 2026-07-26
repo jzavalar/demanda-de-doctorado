@@ -94,35 +94,40 @@ en la tabla correspondiente.
 | No duplicar datos entre tabla y figura | Sección 13 de la guía RIDE | ✅ Cumplido **tras aplicar la sección 2** de este documento — antes de esta revisión, fig05/fig06 sí duplicaban a fig14/fig15 |
 | Evaluar necesidad de cada figura | Sección 13 | ✅ Cumplido — ver clasificación completa arriba |
 | Fuente ("Fuente: Elaboración propia") debajo, como texto de Word | Sección 13 | ✅ Cumplido — no se encontró `caption =` en ninguno de los dos scripts generadores; la fuente vive únicamente en `pies-de-figura.md`, para pegarse como texto de Word, no está incrustada en el `.png` |
-| Título arriba, en negritas, como texto de Word (no incrustado en el `.png`) | Sección 13 | ❌ **No cumplido — hallazgo real, ver sección 4** |
+| Título arriba, en negritas, como texto de Word (no incrustado en el `.png`) | Sección 13 | ✅ **Corregido el 26-jul-2026** — ver sección 4 (actualizada) |
 
-## 4. Hallazgo real: el título SÍ está incrustado en las 15 imágenes
+## 4. Hallazgo de formato — RESUELTO el 26 de julio de 2026
 
-Al revisar el código fuente de los dos scripts generadores se encontró:
+Al revisar el código fuente de los dos scripts generadores se encontró que las 15 imágenes
+llevaban el título **dibujado dentro del PNG** (bold, centrado):
 
 ```r
-# datos_12.analisis-descriptivo.R, líneas 148 y 239
+# datos_12.analisis-descriptivo.R, líneas 148 y 239 (ANTES)
 labs(x = ..., y = ..., title = etiqueta) +
 theme(plot.title = element_text(face = "bold", size = 11), ...)
 
-# datos_13.mapa-entidades.R, línea 102
+# datos_13.mapa-entidades.R, línea 102 (ANTES)
 labs(title = titulo_interno) +
 theme(plot.title = element_text(face = "bold", size = 11, hjust = 0.5), ...)
 ```
 
-Las 15 imágenes llevan el título **dibujado dentro del PNG** (bold, centrado). Al mismo tiempo,
-`pies-de-figura.md` genera el mismo título como texto para pegar en Word ("**Figura N.**
-Título..."). Esto significa que, si se sigue el flujo tal cual está hoy, **el título quedaría
-duplicado**: una vez dentro de la imagen y otra vez como texto de Word arriba de ella — el
-mismo problema que ya se había corregido en una iteración anterior del proyecto (el análisis
-MCA), pero que reapareció en estos dos scripts nuevos.
+Esto duplicaba el título con el que `pies-de-figura.md` ya genera como texto para pegar en
+Word — el mismo problema que ya se había corregido en una iteración anterior del proyecto (el
+análisis MCA), pero que había reaparecido en estos dos scripts nuevos.
 
-**Corrección recomendada** (mínima, sin tocar el resto del pipeline): quitar `title = ...` de
-cada `labs()` y la línea `theme(plot.title = ...)` correspondiente, en ambos scripts, para las
-7 figuras que se conservan (fig01, fig02, fig09, fig10, fig13, fig14, fig15) — no hace falta
-corregir fig03-fig08, fig11, fig12, fig05, fig06 si de todas formas se retiran del manuscrito.
-El título y la fuente deben vivir exclusivamente en `pies-de-figura.md`, tal como ya lo hace la
-fuente.
+**Corrección aplicada:** se quitó `title = ...` de cada `labs()` y la línea
+`theme(plot.title = ...)` correspondiente, en las tres funciones generadoras de figura de
+ambos scripts (barras univariadas, barras apiladas bivariadas, y el mapa coroplético) — es
+decir, en las **15** figuras, no solo en las 7 que se conservan, para que el código quede
+consistente y cualquier figura que se regenere en el futuro (incluidas las 8 que hoy se
+retiran) nazca ya sin este problema.
+
+**Verificación aplicada, no solo visual:** se regeneraron las 15 figuras desde cero
+(`datos_03` → `datos_12` → `datos_13`) y se comparó, con Python/Pillow, la franja superior
+(filas 0-30 px) de cada imagen antes y después del cambio. Antes del cambio, esa franja tenía
+miles de píxeles oscuros (el texto del título); después, 0 píxeles oscuros en las 7 figuras
+esenciales — confirmando que el título ya no está incrustado, sin depender solo de una
+inspección visual.
 
 ## 5. Observación menor (no bloqueante): nota de tamaño de muestra
 
@@ -137,10 +142,12 @@ con el total (`n total = 100`) en una esquina del gráfico. fig13 (cruce) y los 
 
 ## 6. Pendientes antes de dar por cerrada esta validación
 
-- [ ] Aplicar la corrección de la sección 4 (quitar título incrustado) en las 7 figuras que se
-      conservan, y regenerar solo esas 7 imágenes.
+- [x] ~~Aplicar la corrección de la sección 4 (quitar título incrustado)~~ — **Hecho el
+      26-jul-2026**, en las 15 figuras (no solo las 7 esenciales), con verificación por
+      análisis de imagen (no solo visual).
 - [ ] Actualizar `pies-de-figura.md` para incluir únicamente las 7 figuras finales, ya
-      renumeradas consecutivamente (Figura 1 a Figura 7).
+      renumeradas consecutivamente (Figura 1 a Figura 7), cuando se arme el manuscrito final
+      (hoy sigue listando las 15, que es correcto mientras conviven en este repositorio).
 - [ ] Construir la Tabla de perfil sociodemográfico (fig03/04/07/08 consolidadas) a partir de
       las hojas `Univ_genero`, `Univ_edad`, `Univ_area_maestria` y `Univ_situacion_laboral` de
       `datos_14.tablas-resultados.xlsx` — no requiere volver a calcular nada.

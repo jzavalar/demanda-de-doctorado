@@ -145,11 +145,10 @@ grafico_barras <- function(datos, variable, etiqueta, archivo, ancho = 7, alto =
     geom_col(fill = "#1F3864") +
     geom_text(aes(label = paste0(n, " (", round(pct, 1), "%)")), hjust = -0.05, size = 3.2) +
     coord_flip(clip = "off") +
-    labs(x = NULL, y = "Frecuencia (n)", title = etiqueta) +
+    labs(x = NULL, y = "Frecuencia (n)") +
     scale_y_continuous(expand = expansion(mult = c(0, 0.3))) +
     theme_minimal(base_size = 11) +
-    theme(plot.title = element_text(face = "bold", size = 11),
-          panel.grid.minor = element_blank())
+    theme(panel.grid.minor = element_blank())
 
   ggsave(file.path(dir_figuras, archivo), p, width = ancho, height = alto, dpi = 300, bg = "white")
   tabla
@@ -236,11 +235,10 @@ grafico_barras_apiladas <- function(datos, var_x, var_fill, etiqueta, archivo, a
   p <- ggplot(tabla, aes(x = x, y = n, fill = fill)) +
     geom_col(position = "fill") +
     scale_y_continuous(labels = percent_format()) +
-    labs(x = NULL, y = "% dentro de cada categoría", fill = NULL, title = etiqueta) +
+    labs(x = NULL, y = "% dentro de cada categoría", fill = NULL) +
     coord_flip() +
     theme_minimal(base_size = 10) +
-    theme(plot.title = element_text(face = "bold", size = 10.5),
-          legend.position = "bottom")
+    theme(legend.position = "bottom")
   ggsave(file.path(dir_figuras, archivo), p, width = ancho, height = alto, dpi = 300, bg = "white")
 }
 

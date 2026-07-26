@@ -47,8 +47,8 @@ despliegan de forma especial en esa forma exacta.
 | 13 | [`datos_13.mapa-entidades.R`](datos_13.mapa-entidades.R) | Script de mapas coropléticos por entidad (estudios y residencia) | R |
 | 13 | [`datos_13.geojson-entidades-mexico.geojson`](datos_13.geojson-entidades-mexico.geojson) | Geometrías de los 32 estados de México, disueltas a nivel estatal a partir de los shapefiles municipales CONABIO 2020-2023 (PhantomInsights, MIT), guardadas localmente para que el mapa no dependa de una fuente en línea | GeoJSON |
 | 14 | [`datos_14.tablas-resultados.xlsx`](datos_14.tablas-resultados.xlsx) | Todas las tablas de resultados (18 hojas: proporciones clave, univariado, bivariado, perfil síntesis, texto libre) | Excel |
-| 15 | [`datos_15.figuras/`](datos_15.figuras) | Las 15 figuras (`.png`) del análisis y los mapas, más `pies-de-figura.md` (texto listo para pegar en el artículo, formato RIDE) y las tablas de apoyo de los mapas en CSV (`datos_15.mapa-estado-estudios.csv`, `datos_15.mapa-estado-residencia.csv`) | PNG / Markdown / CSV |
-| 16 | [`datos_16.validacion-figuras-manuscrito.md`](datos_16.validacion-figuras-manuscrito.md) | Clasifica las 15 figuras generadas en esenciales (7) vs. redundantes con tabla ya existente (8), y valida su diseño contra los criterios editoriales de RIDE — incluye un hallazgo real de formato (título incrustado en el PNG) con su corrección | Markdown |
+| 15 | [`datos_15.figuras/`](datos_15.figuras) — ver su [README](datos_15.figuras/README.md) | Las 15 figuras (`.png`) del análisis y los mapas, más `pies-de-figura.md` (texto listo para pegar en el artículo, formato RIDE) y las tablas de apoyo de los mapas en CSV (`datos_15.mapa-estado-estudios.csv`, `datos_15.mapa-estado-residencia.csv`) | PNG / Markdown / CSV |
+| 16 | [`datos_16.validacion-figuras-manuscrito.md`](datos_16.validacion-figuras-manuscrito.md) | Clasifica las 15 figuras generadas en esenciales (7) vs. redundantes con tabla ya existente (8), y valida su diseño contra los criterios editoriales de RIDE — el hallazgo de formato que documentaba (título incrustado en el PNG) ya está corregido | Markdown |
 | — | [`LICENSE.txt`](LICENSE.txt) | Licencia y forma de citar el conjunto de datos | Texto plano |
 
 ## 2. El instrumento
@@ -273,14 +273,15 @@ consolidan en una tabla de perfil; dos gráficos de barras por entidad quedan re
 a los mapas que muestran la misma variable con más patrón visual; y dos cruces bivariados sin
 asociación significativa (RQ6) se reportan como tabla de contingencia, no como figura.
 
-El documento también deja registrado un **hallazgo real de formato**, no solo teórico: al
-revisar el código de `datos_12.analisis-descriptivo.R` y `datos_13.mapa-entidades.R` se
-encontró que el título de cada figura queda dibujado **dentro** del `.png` (vía
-`labs(title=...)` de `ggplot2`), lo que lo duplicaría con el título que `pies-de-figura.md` ya
-genera como texto para pegar en Word — el mismo problema que se había corregido en una
-iteración anterior del proyecto (el análisis de correspondencias múltiples), pero que reapareció
-en estos dos scripts nuevos. El documento incluye la corrección exacta (dos líneas por script) y
-deja pendiente regenerar únicamente las 7 imágenes que sí se conservan.
+El documento también deja registrado un **hallazgo de formato ya corregido**: al revisar el
+código de `datos_12.analisis-descriptivo.R` y `datos_13.mapa-entidades.R` se encontró que el
+título de cada figura quedaba dibujado **dentro** del `.png` (vía `labs(title=...)` de
+`ggplot2`), lo que lo duplicaba con el título que `pies-de-figura.md` ya genera como texto para
+pegar en Word — el mismo problema que se había corregido en una iteración anterior del proyecto
+(el análisis de correspondencias múltiples), pero que había reaparecido en estos dos scripts
+nuevos. La corrección ya se aplicó a las 15 figuras (se regeneraron todas desde cero) y se
+verificó con análisis de imagen (Python/Pillow), no solo visualmente: la franja superior de las
+7 figuras esenciales pasó de miles de píxeles oscuros (el texto del título) a cero.
 
 ## 11. Historial de versiones
 
@@ -298,5 +299,7 @@ deja pendiente regenerar únicamente las 7 imágenes que sí se conservan.
 | 26-jul-2026 | Se implementó el plan de análisis: `datos_12.analisis-descriptivo.R` (univariado, bivariado con pruebas de asociación, perfil síntesis, texto libre) y `datos_13.mapa-entidades.R` (mapas coropléticos, con geometrías guardadas localmente en `datos_13.geojson-entidades-mexico.geojson`). Se corrigió un bug real de idempotencia detectado al probar el script del mapa (duplicaba pies de figura si se corría más de una vez) antes de publicarlo. Salidas en `datos_14.tablas-resultados.xlsx` y `datos_15.figuras/`. |
 | 26-jul-2026 | Se agregó `datos_16.validacion-figuras-manuscrito.md`: clasifica las 15 figuras generadas en esenciales (7) vs. redundantes con una tabla ya existente (8), aplicando el criterio de necesidad acordado. Se encontró y documentó un hallazgo real de formato: el título queda incrustado dentro de los `.png` (vía `labs(title=...)`), duplicando el texto que `pies-de-figura.md` ya genera para Word; se dejó la corrección exacta pendiente de aplicar a las 7 figuras que se conservan. |
 | 26-jul-2026 | Se sustituyó la fuente geoespacial del mapa: de un repositorio sin licencia declarada a los shapefiles municipales CONABIO 2020-2023 publicados por [PhantomInsights](https://github.com/PhantomInsights/mexico-geojson) (licencia MIT). Se disolvió cada estado a partir de sus municipios y se simplificó la geometría; se regeneraron `fig14`/`fig15` y se confirmó que el mapa es visualmente equivalente. Referencia lista para citar en el artículo. |
+| 26-jul-2026 | Se corrigieron duplicados detectados tras subir el repositorio a GitHub (15 figuras y `pies-de-figura.md` que habían quedado también en la raíz, además de dentro de `datos_15.figuras/`). En la limpieza se eliminaron por completo `datos_15.mapa-estado-estudios.csv` y `datos_15.mapa-estado-residencia.csv` (no quedaron ni en la raíz ni en la carpeta); se detectó al clonar el repositorio publicado y se corrigió regenerándolos en `datos_15.figuras/`, su ubicación correcta según `datos_13.mapa-entidades.R`. |
+| 26-jul-2026 | **Corregido** el hallazgo de formato de `datos_16.validacion-figuras-manuscrito.md`: se quitó el título incrustado (`labs(title=...)`) de las tres funciones generadoras de figura en `datos_12.analisis-descriptivo.R` y `datos_13.mapa-entidades.R` (las 15 figuras, no solo las 7 esenciales, para dejar el código consistente). Se regeneró todo el pipeline (`datos_03`→`datos_12`→`datos_13`) y se verificó con análisis de imagen (Python/Pillow) que la franja superior de las figuras ya no contiene el texto del título — no solo inspección visual. |
 | 26-jul-2026 | Se convirtió `datos_15b.tablas-mapas.xlsx` (2 hojas planas) en dos archivos CSV independientes, consistente con el resto del repositorio (CSV para tablas de una sola relación, sin dependencias de lectura). Se actualizó `datos_13.mapa-entidades.R` en consecuencia y se eliminó la dependencia de `writexl` en ese script. |
 | 26-jul-2026 | Se renombraron esos dos archivos a `datos_15.mapa-estado-estudios.csv` y `datos_15.mapa-estado-residencia.csv` (antes `datos_15b...`), y se actualizó `datos_13.mapa-entidades.R` para que los genere ya con estos nombres. |
