@@ -14,7 +14,8 @@
 # FUENTE DEL ARCHIVO GEOESPACIAL: geometrias de los 32 estados de Mexico,
 # derivadas de los shapefiles municipales CONABIO 2020-2023 publicados por
 # PhantomInsights (https://github.com/PhantomInsights/mexico-geojson,
-# licencia MIT). El archivo original de ese repositorio esta a nivel de
+# licencia MIT). Referencia completa en formato APA lista para el articulo:
+# ver datos_17.referencias-bibliograficas.md. El archivo original de ese repositorio esta a nivel de
 # municipio; se disolvio (union geometrica) cada estado a partir de sus
 # municipios, se simplifico la geometria (tolerancia 0.01 grados) para reducir
 # el tamano del archivo sin alterar la forma visible a la escala del mapa, y
