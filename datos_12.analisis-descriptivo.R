@@ -30,6 +30,13 @@
 
 try(Sys.setlocale("LC_ALL", "C.UTF-8"), silent = TRUE)
 
+# Semilla fija: las pruebas de Fisher exacto de este script usan simulacion
+# Monte Carlo (simulate.p.value = TRUE); sin una semilla fija, el p-valor
+# exacto varia ligeramente entre corridas. Se fija para que los numeros
+# citados en el manuscrito sean reproducibles byte a byte, no solo
+# "aproximadamente los mismos".
+set.seed(20260726)
+
 # ------------------------------------------------------------------------------
 # BLOQUE 0: CARGA SEGURA DE PAQUETES
 # ------------------------------------------------------------------------------
