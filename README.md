@@ -1,21 +1,23 @@
-### Datos y Scripts de Procesamiento para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
+# Datos y Scripts de Procesamiento para el Artículo *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
 
-> Este repositorio acompaña al artículo derivado de esta investigación y se publica para dar cumplimiento a la transparencia de datos, métodos y materiales solicitada por la revista de destino ([RIDE](https://www.ride.org.mx/)), y para que cualquier persona pueda **reproducir de principio a fin** el proceso de preparación de los datos previo a su análisis y su posterior procesamiento.
+**Institución responsable:** Colegio de Postgraduados, Campus Córdoba
+**Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal — [obduliabb@colpos.mx](mailto:obduliabb@colpos.mx)
+**Responsable del repositorio y sus productos:** Dr. Jesús Zavala Ruiz — [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)
+**Periodo de levantamiento:** 4 de abril de 2024 – 7 de mayo de 2024
+**N total de respuestas:** 113 (100 con interés declarado en cursar el doctorado)
+**Licencia:** [CC BY 4.0]([LICENSE.txt](LICENSE.txt))
+**Creación de este repositorio:** 23 de julio de 2026
+**Última actualización de este repositorio:** 25 de julio de 2026
 
-**Institución responsable:** Colegio de Postgraduados, Campus Córdoba  
-**Responsable del proyecto de investigación:** Dra. Obdulia Baltazar Bernal  
-**Contacto:*** [obduliabb@colpos.mx](mailto:obduliabb@colpos.mx)  
-**Responsable del repositorio y sus productos:** Dr. Jesús Zavala Ruiz  
-**Contacto:*** [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)  
-
-**Periodo de levantamiento de datos:** 4 de abril de 2024 – 7 de mayo de 2024  
-**N total de respuestas:** 113 (100 con interés declarado en cursar el doctorado)  
-**Licencia:** [CC BY 4.0](LICENSE.txt)  
-**Última actualización de este repositorio:** 23 de julio de 2026  
+> Este repositorio acompaña al artículo derivado de esta investigación y se publica para dar
+> cumplimiento a la transparencia de datos, métodos y materiales solicitada por la revista de
+> destino ([RIDE](https://www.ride.org.mx/)), y para que cualquier persona pueda **reproducir
+> de principio a fin** el proceso de preparación de los datos previo a su análisis y su
+> posterior procesamiento.
 
 ---
 
-#### 1. Contenido del repositorio
+## 1. Contenido del repositorio
 
 Todos los archivos de datos y de código siguen la nomenclatura `datos_NN.nombre-descriptivo.ext`,
 numerados en el orden lógico del flujo de trabajo (00 = insumos de origen → 08 = trazabilidad
@@ -33,48 +35,49 @@ despliegan de forma especial en esa forma exacta.
 | 03 | [`datos_03.limpieza-datos.R`](datos_03.limpieza-datos.R) | **Script de limpieza y estandarización**, comentado y automatizado en 3 pasos | R |
 | 04 | [`datos_04.datos-limpios-completos.csv`](datos_04.datos-limpios-completos.csv) · [`.xlsx`](datos_04.datos-limpios-completos.xlsx) · [`.rds`](datos_04.datos-limpios-completos.rds) | Datos limpios, las 113 respuestas | CSV / Excel / R nativo |
 | 05 | [`datos_05.datos-interesados.csv`](datos_05.datos-interesados.csv) · [`.rds`](datos_05.datos-interesados.rds) | Subconjunto de 04 filtrado a `interes_en_doctorado = "Sí"` (100 respuestas) | CSV / R nativo |
-| 06 | [`datos_06.diccionario-datos.xlsx`](datos_06.diccionario-datos.xlsx) | **Diccionario de datos completo**: variables, recodificación, estadísticas descriptivas | Excel (5 hojas) |
+| 06 | [`datos_06.diccionario-datos.xlsx`](datos_06.diccionario-datos.xlsx) | **Diccionario de datos completo**: variables, codebook de recodificación, estadísticas descriptivas | Excel (5 hojas) |
 | 07 | [`datos_07.reporte-validacion-limpieza.md`](datos_07.reporte-validacion-limpieza.md) | Reporte de auditoría del proceso de limpieza: hallazgos y su resolución | Markdown |
-| 08 | [`datos_08.sesion-r-reproducibilidad.txt`](datos_08.sesion-r-reproducibilidad.txt) | Versión de R y de cada paquete usada para generar los archivos (se genera automáticamente al correr el script) | Texto plano |
-| 09 | [`datos_09.instrucciones-entorno-windows-linux.md`](datos_09.instrucciones-entorno-windows-linux.md) | Instrucciones para reproducir el entorno de **R** y de **RStudio Desktop** en **Windows 11**, **Ubuntu Linux 24** y **Fedora Linux 44** (manual y automatizado, con solución de fallas) | Markdown |
-| 09 | [`datos_09.instalar-entorno-windows.ps1`](datos_09.instalar-entorno-windows.ps1) | Script de instalación automatizada del entorno (R + RStudio vía winget, con respaldo de descarga directa), a prueba de fallas, para **Windows 11** | PowerShell |
-| 09 | [`datos_09.instalar-entorno-ubuntu.sh`](datos_09.instalar-entorno-ubuntu.sh) | Script de instalación automatizada del entorno (R + RStudio), a prueba de fallas, para **Ubuntu 24.04 LTS** | Bash |
-| 09 | [`datos_09.instalar-entorno-fedora.sh`](datos_09.instalar-entorno-fedora.sh) | Script de instalación automatizada del entorno (R + RStudio vía Copr `iucar/rstudio`), a prueba de fallas, para **Fedora Linux 44** | Bash |
+| 08 | `datos_08.sesion-r-reproducibilidad.txt` | Versión de R y de cada paquete usada para generar los archivos (se genera automáticamente al correr el script) | Texto plano |
+| 09 | [`datos_09.instrucciones-entorno-windows-linux.md`](datos_09.instrucciones-entorno-windows-linux.md) | Instrucciones para reproducir el entorno de R **y de RStudio Desktop** en Windows 11, Ubuntu 24 y Fedora 44 (manual y automatizado, con solución de fallas) | Markdown |
+| 09 | [`datos_09.instalar-entorno-windows.ps1`](datos_09.instalar-entorno-windows.ps1) | Script de instalación automatizada del entorno (R + RStudio vía winget, con respaldo de descarga directa), a prueba de fallas, para Windows 11 | PowerShell |
+| 09 | [`datos_09.instalar-entorno-ubuntu.sh`](datos_09.instalar-entorno-ubuntu.sh) | Script de instalación automatizada del entorno (R + RStudio), a prueba de fallas, para Ubuntu 24.04 LTS | Bash |
+| 09 | [`datos_09.instalar-entorno-fedora.sh`](datos_09.instalar-entorno-fedora.sh) | Script de instalación automatizada del entorno (R + RStudio vía Copr `iucar/rstudio`), a prueba de fallas, para Fedora Linux 44 | Bash |
+| 10 | [`datos_10.verificar-reproducibilidad.R`](datos_10.verificar-reproducibilidad.R) | Compara los archivos clonados/publicados contra los que regenera `datos_03.limpieza-datos.R` al volver a correrlo, para confirmar reproducibilidad byte a byte | R |
 | — | [`LICENSE.txt`](LICENSE.txt) | Licencia y forma de citar el conjunto de datos | Texto plano |
 
-#### 2. El instrumento
+## 2. El instrumento
 
-El cuestionario ([`datos_00.instrumento-cuestionario.docx`](datos_00.instrumento-cuestionario.docx)) se aplicó en línea (Google Forms) y
+El cuestionario (`datos_00.instrumento-cuestionario.*`) se aplicó en línea (Google Forms) y
 consta de 10 preguntas: interés e línea de doctorado, género, edad por rangos, entidad de
 estudios y de residencia, maestría e institución de origen, situación laboral, motivación y
 plazo estimado para iniciar el doctorado. El detalle pregunta-por-pregunta y una nota sobre
 una diferencia menor entre el documento y el formulario en línea están en la transcripción
-Markdown ([`datos_00.instrumento-cuestionario.md`](datos_00.instrumento-cuestionario.md)).
+Markdown.
 
-#### 3. Proceso de limpieza de datos (2 pasos)
+## 3. Proceso de limpieza de datos (2 pasos)
 
 El script `datos_03.limpieza-datos.R` implementa el criterio acordado con el equipo de
 investigación: **estandarizar sin perder significado ni riqueza de la información**.
 
 **Paso 1 — Reglas de estandarización**
-- Normalización de texto (Unicode NFC + recorte/colapso de espacios) en todas las columnas.  
+- Normalización de texto (Unicode NFC + recorte/colapso de espacios) en todas las columnas.
 - Estandarización de entidades federativas mediante un catálogo explícito y auditable
   (`datos_02.catalogo-estandarizacion-entidades.csv`), no por adivinación con expresiones
   regulares — cada equivalencia (p. ej. "Michoacan" → "Michoacán", "México" → "Estado de
-  México") queda documentada con su justificación.  
+  México") queda documentada con su justificación.
 - Manejo explícito del dato faltante: se usa `NA` únicamente cuando la persona genuinamente
   no respondió o la pregunta no le aplicaba (lógica de salto del cuestionario). Una respuesta
   libre que sí existe pero no encaja en ninguna categoría predefinida **nunca** se convierte en
   `NA`: se marca `"Otro"` y su texto original se conserva íntegro en una columna espejo
-  `..._otro_texto`.  
+  `..._otro_texto`.
 
 **Paso 2 — Automatización y validación**
-- Lectura y validación de estructura (columnas esperadas) con manejo de errores por bloque.  
+- Lectura y validación de estructura (columnas esperadas) con manejo de errores por bloque.
 - Recodificación de variables categóricas con reglas estrictas, una por una, para no fusionar
   respuestas con significados distintos (p. ej. "Indefinido" se mantiene separado de un dato
-  faltante real; "Sector privado" ya no se agrupa con "Aplicación en campo").  
+  faltante real; "Sector privado" ya no se agrupa con "Aplicación en campo").
 - Validación de integridad automática: el script se detiene si el número de filas cambia
-  respecto al archivo crudo.  
+  respecto al archivo crudo.
 
 **Paso 3 — Exportación en 3 formatos:** `.csv` (uso general), `.xlsx` (revisión manual /
 coautores) y `.rds` (formato nativo de R, conserva los tipos de dato exactos).
@@ -82,7 +85,7 @@ coautores) y `.rds` (formato nativo de R, conserva los tipos de dato exactos).
 El detalle completo de cada hallazgo de la auditoría y su resolución está en
 [`datos_07.reporte-validacion-limpieza.md`](datos_07.reporte-validacion-limpieza.md).
 
-#### 4. Hallazgos principales (resumen)
+## 4. Hallazgos principales (resumen)
 
 | Hallazgo | Resolución |
 |---|---|
@@ -96,7 +99,7 @@ El detalle completo de cada hallazgo de la auditoría y su resolución está en
 Ningún hallazgo implicó pérdida de registros: las 113 respuestas se conservan íntegras en
 todo el proceso (verificado automáticamente por el script).
 
-#### 5. Diccionario de datos
+## 5. Diccionario de datos
 
 `datos_06.diccionario-datos.xlsx` contiene 5 hojas:
 
@@ -110,9 +113,9 @@ todo el proceso (verificado automáticamente por el script).
    residencia).
 6. **Estadisticas_Descriptivas** — frecuencias y porcentajes por variable, listas para citar.
 
-#### 6. Cómo reproducir el entorno y la limpieza de datos desde cero
+## 6. Cómo reproducir el entorno y la limpieza de datos desde cero
 
-##### 6.1 Preparar el entorno (nueva máquina, Windows 11, Ubuntu 24 o Fedora 44)
+### 6.1 Preparar el entorno (nueva máquina, Windows 11, Ubuntu 24 o Fedora 44)
 
 Para dejar instalado R y todos los paquetes necesarios de forma automatizada y a prueba de
 fallas:
@@ -133,7 +136,7 @@ chmod +x datos_09.instalar-entorno-fedora.sh && ./datos_09.instalar-entorno-fedo
 
 Los tres scripts nunca detienen la instalación ante un fallo aislado: reportan cada paso como
 `[OK]`, `[AVISO]` o `[FALLO]`, reintentan automáticamente vía CRAN cualquier paquete que no se
-pueda instalar por el medio más rápido de cada sistema y verifican al final que R pueda cargar
+pueda instalar por el medio más rápido de cada sistema, y verifican al final que R pueda cargar
 los 6 paquetes antes de declarar éxito. También instalan **RStudio Desktop** de forma opcional:
 en Windows, vía `winget` (con respaldo de descarga directa del instalador estable de Posit); en
 Ubuntu, descargando el `.deb` estable de Posit; en Fedora, habilitando el repositorio Copr
@@ -144,11 +147,10 @@ momento), el script lo reporta como `[AVISO]` y continúa: RStudio no es necesar
 manual paso a paso y una tabla de solución de fallas están en
 [`datos_09.instrucciones-entorno-windows-linux.md`](datos_09.instrucciones-entorno-windows-linux.md).
 
-##### 6.2 Ejecutar la limpieza de datos
+### 6.2 Ejecutar la limpieza de datos
 
 ```r
 # 1. Clonar o descargar este repositorio completo en una sola carpeta
-
 # 2. Abrir R o RStudio y fijar el directorio de trabajo a esa carpeta:
 setwd("ruta/a/este/repositorio")
 
@@ -162,28 +164,61 @@ source("datos_03.limpieza-datos.R")
 Requisitos: **R ≥ 4.3**. Los paquetes necesarios (`readxl`, `stringr`, `dplyr`, `writexl`,
 `openxlsx`, `stringi`) se instalan automáticamente si faltan. El script:
 
-- Lee `datos_01.datos-brutos-cuestionario.xlsx` y `datos_02.catalogo-estandarizacion-entidades.csv`.  
-- Genera (o sobrescribe) `datos_04.datos-limpios-completos.*`, `datos_05.datos-interesados.*` y `datos_08.sesion-r-reproducibilidad.txt`.
-- Se detiene con un mensaje explícito ante cualquier error (columnas faltantes, archivo corrupto, pérdida de registros), en vez de fallar en silencio.  
-- Al terminar exitosamente imprime un reporte con conteos totales, valores `NA` por variable y las respuestas libres preservadas en las columnas `..._otro_texto`.  
+- Lee `datos_01.datos-brutos-cuestionario.xlsx` y `datos_02.catalogo-estandarizacion-entidades.csv`.
+- Genera (o sobrescribe) `datos_04.datos-limpios-completos.*`, `datos_05.datos-interesados.*`
+  y `datos_08.sesion-r-reproducibilidad.txt`.
+- Se detiene con un mensaje explícito ante cualquier error (columnas faltantes, archivo
+  corrupto, pérdida de registros), en vez de fallar en silencio.
+- Al terminar exitosamente imprime un reporte con conteos totales, valores `NA` por variable
+  y las respuestas libres preservadas en las columnas `..._otro_texto`.
 
 Para verificar bajo qué versión exacta de R y de cada paquete se generaron los archivos aquí
 publicados, ver `datos_08.sesion-r-reproducibilidad.txt` (se regenera cada vez que se corre
 el script, con fecha y hora de ejecución).
 
-#### 7. Privacidad
+### 6.3 Comparar los archivos clonados contra los que genera el script
+
+`datos_10.verificar-reproducibilidad.R` responde a una pregunta distinta a la de 6.2: no solo
+si el script corre sin errores, sino si **reproduce exactamente** los archivos que vienen
+publicados en este repositorio.
+
+```r
+setwd("ruta/a/este/repositorio")
+source("datos_10.verificar-reproducibilidad.R")
+```
+
+La primera vez que se corre (antes de haber ejecutado `datos_03.limpieza-datos.R` más de una
+vez), este script:
+
+1. Guarda una copia de los `datos_04.*`/`datos_05.*` **tal como vinieron publicados/clonados**
+   en una carpeta temporal `_verificacion_manual/clonado/`.
+2. Vuelve a correr `datos_03.limpieza-datos.R` desde cero (esto sobrescribe
+   `datos_04.*`/`datos_05.*` con una versión recién generada).
+3. Compara **campo por campo** (no solo byte a byte, para no dar falsos positivos por
+   metadatos internos de los `.xlsx`) la copia guardada contra la versión recién generada, y
+   reporta `[OK]` o `[DIFERENCIAS]` por cada uno de los 5 archivos.
+
+Este mecanismo fue puesto a prueba deliberadamente antes de publicarse: se alteró a propósito
+un valor en la copia de referencia y se confirmó que el script efectivamente reporta
+`[DIFERENCIAS]` (no simplemente `[OK]` sin comparar de verdad). Sobre los datos reales de este
+proyecto, la comparación confirma que los 5 archivos son idénticos.
+
+La carpeta `_verificacion_manual/` es solo un área de trabajo temporal de esta verificación;
+no forma parte de los datos publicados y puede borrarse en cualquier momento sin afectar nada.
+
+## 7. Privacidad
 
 El conjunto de datos no contiene nombres, correos electrónicos ni identificadores directos de
 las personas respondientes; solo variables demográficas agregadas por rango (edad) y categoría
 (género, entidad, situación laboral). No se identificó riesgo de reidentificación relevante
 para su publicación en acceso abierto.
 
-#### 8. Licencia y forma de citar
+## 8. Licencia y forma de citar
 
 Ver [`LICENSE.txt`](LICENSE.txt). Este material se distribuye bajo **CC BY 4.0**, en
-concordancia con la política de acceso abierto de la revista de destino: [RIDE](https://www.ride.org.mx/).
+concordancia con la política de acceso abierto de la revista de destino.
 
-#### 9. Historial de versiones
+## 9. Historial de versiones
 
 | Fecha | Cambio |
 |---|---|
@@ -193,3 +228,5 @@ concordancia con la política de acceso abierto de la revista de destino: [RIDE]
 | 23-jul-2026 | Instrucciones y scripts de instalación a prueba de fallas del entorno de R para Ubuntu 24.04 LTS y Fedora Linux 44 (`datos_09.*`), probados de extremo a extremo en un contenedor limpio de Ubuntu. |
 | 23-jul-2026 | Se agregó la instalación opcional de RStudio Desktop a ambos scripts (`.deb` estable de Posit en Ubuntu; repositorio Copr `iucar/rstudio` en Fedora), con reintentos y sin detener el script si falla. |
 | 23-jul-2026 | Se agregó `datos_09.instalar-entorno-windows.ps1` (instalación a prueba de fallas de R y RStudio en Windows 11 vía winget, con respaldo de descarga directa desde CRAN/Posit) y se completó `datos_09.instrucciones-entorno-windows-linux.md` con instrucciones para los tres sistemas operativos (Windows, Ubuntu, Fedora). |
+| 23-jul-2026 | Se agregó `datos_10.verificar-reproducibilidad.R`, que compara campo por campo los archivos clonados/publicados contra los que regenera `datos_03.limpieza-datos.R`; confirmado que los 5 archivos de datos limpios son idénticos, y que el script detecta correctamente diferencias cuando existen (probado deliberadamente). |
+| 26-jul-2026 | Se corrigió el contexto institucional en todos los archivos: institución responsable (Colegio de Postgraduados, Campus Córdoba), responsables del proyecto y del repositorio con sus contactos, título del artículo y enlace a la revista (RIDE). |
