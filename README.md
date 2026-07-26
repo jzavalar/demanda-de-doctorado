@@ -5,9 +5,8 @@
 **Responsable del repositorio y sus productos:** Dr. Jesús Zavala Ruiz — [jzr@xanum.uam.mx](mailto:jzr@xanum.uam.mx)
 **Periodo de levantamiento:** 4 de abril de 2024 – 7 de mayo de 2024
 **N total de respuestas:** 113 (100 con interés declarado en cursar el doctorado)
-**Licencia:** [CC BY 4.0]([LICENSE.txt](LICENSE.txt))
-**Creación de este repositorio:** 23 de julio de 2026
-**Última actualización de este repositorio:** 25 de julio de 2026
+**Licencia:** [CC BY 4.0](LICENSE.txt)
+**Última actualización de este repositorio:** 23 de julio de 2026
 
 > Este repositorio acompaña al artículo derivado de esta investigación y se publica para dar
 > cumplimiento a la transparencia de datos, métodos y materiales solicitada por la revista de
