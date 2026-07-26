@@ -148,13 +148,11 @@ tryCatch({
 # BLOQUE 4: EXPORTAR TABLAS DE APOYO Y AGREGAR PIES DE FIGURA
 # ------------------------------------------------------------------------------
 tryCatch({
-  if (!requireNamespace("writexl", quietly = TRUE)) install.packages("writexl", repos = "https://cran.rstudio.com/")
-  library(writexl)
-  write_xlsx(list(
-    "Mapa_estado_estudios" = tabla_mapa_estudios,
-    "Mapa_estado_residencia" = tabla_mapa_residencia
-  ), file.path(dir_figuras, "datos_15b.tablas-mapas.xlsx"))
-  message("Tablas de apoyo de los mapas exportadas a ", file.path(dir_figuras, "datos_15b.tablas-mapas.xlsx"))
+  write.csv(tabla_mapa_estudios, file.path(dir_figuras, "datos_15.mapa-estado-estudios.csv"),
+            row.names = FALSE, na = "NA", fileEncoding = "UTF-8")
+  write.csv(tabla_mapa_residencia, file.path(dir_figuras, "datos_15.mapa-estado-residencia.csv"),
+            row.names = FALSE, na = "NA", fileEncoding = "UTF-8")
+  message("Tablas de apoyo de los mapas exportadas a datos_15.mapa-estado-estudios.csv y datos_15.mapa-estado-residencia.csv")
 }, error = function(e) message("AVISO al exportar tablas de los mapas: ", e$message))
 
 tryCatch({
