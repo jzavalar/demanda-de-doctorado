@@ -1,7 +1,7 @@
 # Reporte de validación del procedimiento de limpieza de datos
 
 **Estudio:** Demanda potencial para un Doctorado en Ciencias (paisaje y turismo rural, desarrollo,
-manejo y aprovechamiento del paisaje rural) — Universidad Autónoma Metropolitana (UAM)
+manejo y aprovechamiento del paisaje rural) — Colegio de Postgraduados, Campus Córdoba
 **Última revisión:** 23 de julio de 2026
 **Script auditado:** [`datos_03.limpieza-datos.R`](datos_03.limpieza-datos.R)
 

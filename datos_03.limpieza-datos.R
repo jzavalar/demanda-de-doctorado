@@ -2,7 +2,9 @@
 # datos_03.limpieza-datos.R
 # Limpieza y estandarizacion de datos — Demanda potencial para un Doctorado en
 # Ciencias (paisaje y turismo rural, desarrollo, manejo y aprovechamiento del
-# paisaje rural). Universidad Autonoma Metropolitana (UAM), Ciudad de Mexico.
+# paisaje rural). Colegio de Postgraduados, Campus Cordoba.
+# Responsable del proyecto de investigacion: Dra. Obdulia Baltazar Bernal (obduliabb@colpos.mx)
+# Responsable del repositorio y sus productos: Dr. Jesus Zavala Ruiz (jzr@xanum.uam.mx)
 #
 # Diseñado en 2 pasos, segun acuerdo con el equipo de investigacion (22-jul-2026):
 #   PASO 1: Reglas de estandarizacion (acentos/espacios/entidades via catalogo

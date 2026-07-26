@@ -1,4 +1,4 @@
-Fecha de ejecucion: 2026-07-23 16:54:52.199567
+Fecha de ejecucion: 2026-07-26 00:44:20.350128
 
 R version 4.3.3 (2024-02-29)
 Platform: x86_64-pc-linux-gnu (64-bit)

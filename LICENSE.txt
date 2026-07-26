@@ -10,9 +10,12 @@ cambios y se enlace a la licencia.
 Texto completo de la licencia: https://creativecommons.org/licenses/by/4.0/deed.es
 
 Cómo citar este conjunto de datos:
-[Autoría, Año]. Datos de demanda potencial para un Doctorado en Ciencias (paisaje y turismo
-rural, desarrollo, manejo y aprovechamiento del paisaje rural) [Conjunto de datos].
-Universidad Autónoma Metropolitana. [DOI o URL del repositorio a completar al depositar].
+Baltazar Bernal, O. (Año). Datos y scripts de procesamiento para el artículo "Demanda
+Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural" [Conjunto de datos].
+Colegio de Postgraduados, Campus Córdoba. [DOI o URL del repositorio a completar al depositar].
 
-Esta licencia es coherente con la política de acceso abierto de la revista de destino
-(adherida a la Iniciativa de Budapest).
+Responsable del proyecto de investigación: Dra. Obdulia Baltazar Bernal (obduliabb@colpos.mx).
+Responsable del repositorio y sus productos: Dr. Jesús Zavala Ruiz (jzr@xanum.uam.mx).
+
+Esta licencia es coherente con la política de acceso abierto de RIDE (https://www.ride.org.mx/),
+la revista de destino, adherida a la Iniciativa de Budapest.
