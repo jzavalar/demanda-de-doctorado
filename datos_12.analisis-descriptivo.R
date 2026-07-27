@@ -396,8 +396,35 @@ tryCatch({
 }, error = function(e) stop("ERROR al exportar tablas: ", e$message))
 
 tryCatch({
-  writeLines(pies_de_figura, file.path(dir_figuras, "pies-de-figura.md"))
-  message("Pies de figura (formato RIDE) guardados en ", file.path(dir_figuras, "pies-de-figura.md"))
+  # Misma logica de bloques con marcadores que datos_13/datos_19 (ver esa
+  # funcion para el detalle): preserva los pies de figura que datos_13 y
+  # datos_19 ya hayan escrito, en vez de sobrescribir todo el archivo.
+  ruta_pies <- file.path(dir_figuras, "pies-de-figura.md")
+  escribir_bloque_pies <- function(ruta, tag, bloque_nuevo,
+                                    orden = c("datos_19", "datos_12", "datos_13")) {
+    ini_tag <- paste0("<!-- CAPTIONS:", tag, ":INICIO -->")
+    fin_tag <- paste0("<!-- CAPTIONS:", tag, ":FIN -->")
+    bloque_tagged <- c(ini_tag, bloque_nuevo, fin_tag)
+    existentes <- list()
+    if (file.exists(ruta)) {
+      lineas <- readLines(ruta, warn = FALSE)
+      for (t in orden) {
+        ini_t <- paste0("<!-- CAPTIONS:", t, ":INICIO -->")
+        fin_t <- paste0("<!-- CAPTIONS:", t, ":FIN -->")
+        idx_i <- which(lineas == ini_t); idx_f <- which(lineas == fin_t)
+        if (length(idx_i) == 1 && length(idx_f) == 1 && idx_f > idx_i) {
+          existentes[[t]] <- lineas[idx_i:idx_f]
+        }
+      }
+    }
+    existentes[[tag]] <- bloque_tagged
+    bloques_finales <- unlist(lapply(orden, function(t) {
+      if (!is.null(existentes[[t]])) c(existentes[[t]], "") else NULL
+    }))
+    writeLines(bloques_finales, ruta)
+  }
+  escribir_bloque_pies(ruta_pies, "datos_12", pies_de_figura)
+  message("Pies de figura (formato RIDE) actualizados en su bloque dentro de ", ruta_pies)
 }, error = function(e) message("AVISO al guardar pies de figura: ", e$message))
 
 cat("\n==================================================\n")

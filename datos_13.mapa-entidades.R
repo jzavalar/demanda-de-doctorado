@@ -160,17 +160,35 @@ tryCatch({
     "**Figura 15.** Distribución por entidad de residencia actual, personas interesadas en el doctorado.\n\n*Fuente: Elaboración propia.*\n"
   )
   ruta_pies <- file.path(dir_figuras, "pies-de-figura.md")
-  ya_incluidos <- file.exists(ruta_pies) && any(grepl("\\*\\*Figura 14\\.\\*\\*", readLines(ruta_pies, warn = FALSE)))
-  if (ya_incluidos) {
-    message("Los pies de figura 14-15 ya estaban presentes en ", ruta_pies, "; no se duplican (script idempotente). ",
-            "Si corrio datos_12.analisis-descriptivo.R de nuevo (que reescribe el archivo desde cero), vuelva a correr este script para restaurarlos.")
-  } else if (file.exists(ruta_pies)) {
-    cat(pies_nuevos, file = ruta_pies, sep = "\n", append = TRUE)
-    message("Pies de figura de los mapas agregados a ", ruta_pies)
-  } else {
-    writeLines(pies_nuevos, ruta_pies)
-    message("Pies de figura de los mapas guardados en ", ruta_pies)
+  # Misma logica de bloques con marcadores que datos_12/datos_19 (ver esa
+  # funcion para el detalle): garantiza el orden final MCA -> datos_12 -> mapas
+  # sin importar en que orden se corrieron los scripts, y sin sobrescribir lo
+  # que los otros dos ya hayan escrito.
+  escribir_bloque_pies <- function(ruta, tag, bloque_nuevo,
+                                    orden = c("datos_19", "datos_12", "datos_13")) {
+    ini_tag <- paste0("<!-- CAPTIONS:", tag, ":INICIO -->")
+    fin_tag <- paste0("<!-- CAPTIONS:", tag, ":FIN -->")
+    bloque_tagged <- c(ini_tag, bloque_nuevo, fin_tag)
+    existentes <- list()
+    if (file.exists(ruta)) {
+      lineas <- readLines(ruta, warn = FALSE)
+      for (t in orden) {
+        ini_t <- paste0("<!-- CAPTIONS:", t, ":INICIO -->")
+        fin_t <- paste0("<!-- CAPTIONS:", t, ":FIN -->")
+        idx_i <- which(lineas == ini_t); idx_f <- which(lineas == fin_t)
+        if (length(idx_i) == 1 && length(idx_f) == 1 && idx_f > idx_i) {
+          existentes[[t]] <- lineas[idx_i:idx_f]
+        }
+      }
+    }
+    existentes[[tag]] <- bloque_tagged
+    bloques_finales <- unlist(lapply(orden, function(t) {
+      if (!is.null(existentes[[t]])) c(existentes[[t]], "") else NULL
+    }))
+    writeLines(bloques_finales, ruta)
   }
+  escribir_bloque_pies(ruta_pies, "datos_13", pies_nuevos)
+  message("Pies de figura de los mapas escritos/actualizados en su bloque dentro de ", ruta_pies)
 }, error = function(e) message("AVISO al actualizar pies de figura: ", e$message))
 
 cat("\n==================================================\n")
