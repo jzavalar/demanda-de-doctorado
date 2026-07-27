@@ -1,24 +1,24 @@
 # Borrador: Materiales y Métodos / Resultados
 
-**Artículo:** *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
+**Artículo:** *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*  
 **Revista de destino:** RIDE — Revista Iberoamericana para la Investigación y el Desarrollo Educativo
-**Institución:** Colegio de Postgraduados, Campus Córdoba
+**Institución:** Colegio de Postgraduados, Campus Córdoba  
 **Estado de este documento:** borrador de trabajo para revisión del equipo, **no** es la versión
 final maquetada en Word. Formato de entrega final (Times New Roman 12, interlineado 1.5,
 encabezados 16/14 pts centrados en negritas, figuras/tablas numeradas con título arriba y
 fuente abajo) se aplica al pasar este texto al documento del manuscrito — ver checklist en
-`01_Normas_Editoriales_RIDE_Guia_Cumplimiento.md`, sección 17.
+`01_Normas_Editoriales_RIDE_Guia_Cumplimiento.md`, sección 17.  
 **Basado en:** `datos_11.plan-analisis-datos.md` (diseño), `datos_12.analisis-descriptivo.R` /
 `datos_13.mapa-entidades.R` (ejecución), `datos_14.tablas-resultados.xlsx` (números fuente),
 `datos_15.figuras/` (figuras finales), `datos_16.validacion-figuras-manuscrito.md`
 (clasificación esencial/tabla ya aplicada), `datos_17.referencias-bibliograficas.md` (citas de
-software y del geojson).
+software y del geojson).  
 **Cifras verificadas el:** 26 de julio de 2026, con semilla fija (`set.seed(20260726)`) para que
 los p-valores simulados de Fisher sean reproducibles byte a byte, no solo aproximados —
-confirmado corriendo el script dos veces y comparando el resultado exacto.
+confirmado corriendo el script dos veces y comparando el resultado exacto.  
 **Pendiente:** la decisión sobre si el análisis de correspondencias múltiples (MCA) se integra
 como técnica complementaria sigue abierta; este borrador **no** lo incluye. Si se integra, RQ7
-tendría una segunda figura de apoyo (ver conversación de trabajo).
+tendría una segunda figura de apoyo (ver conversación de trabajo).  
 
 ---
 
@@ -26,15 +26,15 @@ tendría una segunda figura de apoyo (ver conversación de trabajo).
 
 ## Diseño del estudio
 
-Estudio observacional, descriptivo y transversal, de enfoque cuantitativo, sobre la demanda
+El estudio es prospectivo, descriptivo y transversal, de enfoque cuantitativo, sobre la demanda
 potencial de un Doctorado en Ciencias orientado al paisaje y turismo rural y al desarrollo,
-manejo y aprovechamiento del paisaje rural. Los datos se recolectaron mediante un cuestionario
+manejo y aprovechamiento del paisaje rural en México. Los datos se recolectaron mediante un cuestionario
 autoadministrado en línea, aplicado del 4 de abril al 7 de mayo de 2024.
 
-El muestreo fue **no probabilístico** (cuestionario difundido sin marco muestral definido). Esta
+El muestreo fue **no probabilístico**  al ser un cuestionario difundido sin marco muestral definido. Esta
 decisión de diseño tiene una consecuencia metodológica que se declara explícitamente y se
 mantiene consistente en todo el análisis: los resultados descritos a continuación caracterizan
-a **quienes respondieron el cuestionario**, no constituyen una estimación de un parámetro
+a **quienes respondieron el cuestionario** y no constituyen una estimación de un parámetro
 poblacional con el rigor de una muestra probabilística. Cualquier intervalo de confianza
 reportado (método de Wilson) debe interpretarse como una medida de precisión muestral dado el
 tamaño de la muestra obtenida, no como un margen de error poblacional generalizable a todos los
@@ -46,12 +46,12 @@ Se obtuvieron **113 respuestas completas**. De ellas, **100 personas (88.5 %)** 
 interés en cursar el doctorado y **13 (11.5 %)** declararon no tener interés; estas últimas no
 respondieron las preguntas subsecuentes sobre línea de interés, motivación y plazo de inicio,
 por diseño del cuestionario (lógica de salto), por lo que los análisis de las secciones RQ2 a
-RQ8 se basan en el subconjunto de **n = 100** personas interesadas, salvo que se indique lo
+RQ8 se basan en el subconjunto de **n = 100**, es decir de las personas interesadas, salvo que se indique lo
 contrario.
 
 ## Instrumento
 
-El instrumento fue un cuestionario de 10 preguntas (Google Forms), con una pregunta filtro
+El instrumento de recolección de datos fue un cuestionario de 10 preguntas administrado en Google Forms, con una pregunta filtro
 adicional de interés general no documentada como ítem independiente en la versión de difusión
 del instrumento (ver nota de trazabilidad en `datos_00.instrumento-cuestionario.md`). Las
 preguntas cubrieron: interés general y línea de doctorado de interés, género, edad por rangos
@@ -70,8 +70,8 @@ editoriales de RIDE sobre transparencia de datos, métodos analíticos y materia
 
 ## Procesamiento y limpieza de datos
 
-La limpieza y estandarización se realizó en R (versión 4.3.3), con un script automatizado y
-documentado en dos pasos:
+La limpieza y estandarización de los datos se realizó utilizando el software R (versión 4.3.3), 
+con un script automatizado y documentado en dos pasos:
 
 1. **Estandarización.** Normalización de texto (Unicode NFC, recorte y colapso de espacios) en
    todas las columnas; estandarización de los nombres de entidad federativa mediante un catálogo
@@ -84,7 +84,7 @@ documentado en dos pasos:
    preservado, para no perder información sustantiva en el proceso de limpieza.
 2. **Automatización y validación.** Recodificación de variables categóricas con reglas
    estrictas y explícitas, diseñadas para no fusionar respuestas con significados distintos entre
-   sí, y una validación de integridad automática que confirma que el número de registros no
+   sí y una validación de integridad automática que confirma que el número de registros no
    cambia entre el archivo crudo y el archivo limpio.
 
 No se identificaron valores faltantes no documentados ni registros duplicados: las 113
@@ -112,7 +112,7 @@ sobre la marcha:
 
 Dado que casi todas las variables son categóricas (nominales o de rango), el análisis fue
 principalmente descriptivo y no paramétrico: frecuencias absolutas y relativas para el perfil
-univariado (RQ1–RQ5), y tablas de contingencia con pruebas de independencia para las
+univariado (RQ1–RQ5) y tablas de contingencia con pruebas de independencia para las
 asociaciones bivariadas pre-especificadas (RQ6–RQ8) — no se exploraron todos los cruces
 posibles entre variables, únicamente los que responden a una pregunta de investigación
 declarada de antemano, para no incurrir en comparaciones múltiples no declaradas.
@@ -120,11 +120,11 @@ declarada de antemano, para no incurrir en comparaciones múltiples no declarada
 **Reglas de decisión estadística**, fijadas de antemano para que el análisis sea reproducible y
 defendible:
 
-- Nivel de significancia α = 0.05, reportando siempre el p-valor exacto en vez de únicamente
-  "significativo/no significativo".
+- Nivel de significancia α = 0.05, reportando siempre el `p-valor` exacto en vez de únicamente
+  como "significativo/no significativo".
 - **Prueba de Fisher exacta** (con simulación Monte Carlo de 5,000 réplicas para las tablas de
   RQ6–RQ7, y 2,000 réplicas para la tabla más grande de RQ8) en lugar de la prueba de
-  chi-cuadrada, aplicada automáticamente por tabla cuando más del 20 % de las celdas esperadas
+  Chi-cuadrada, aplicada automáticamente por tabla cuando más del 20 % de las celdas esperadas
   tuvieron una frecuencia menor a 5 (regla de Cochran), en vez de decidirlo caso por caso a
   criterio del equipo.
 - **V de Cramér** como medida de tamaño de efecto en toda tabla de contingencia probada,
@@ -136,12 +136,12 @@ defendible:
   no responderla) — sin imputación de ningún tipo.
 - **Intervalo de confianza de Wilson** (no el normal-aproximado, menos adecuado para
   proporciones cercanas a los extremos o con n pequeño) para las proporciones clave: interés
-  general, línea de doctorado más elegida, y proporción de permanencia geográfica.
+  general, línea de doctorado más elegida y proporción de permanencia geográfica.
 
 Como complemento visual a RQ8, se generaron mapas coropléticos por entidad federativa. Las
-geometrías estatales se construyeron disolviendo (unión geométrica) los límites municipales del
-conjunto de shapefiles CONABIO 2020-2023, redistribuidos por PhantomInsights bajo licencia MIT
-(referencia completa en `datos_17.referencias-bibliograficas.md`).
+geometrías estatales se construyeron disolviendo, por unión geométrica, los límites municipales del
+conjunto de archivos shapefiles de la Comisión Nacional de Biodiversidad (CONABIO 2020-2023), redistribuidos 
+por PhantomInsights bajo licencia MIT (referencia completa en `datos_17.referencias-bibliograficas.md`).
 
 ## Software
 
@@ -149,7 +149,8 @@ El análisis se realizó íntegramente en R (versión 4.3.3; R Core Team, 2024),
 paquetes `readxl`, `stringr`, `dplyr`, `writexl`, `openxlsx` y `stringi` para la limpieza de
 datos; `ggplot2`, `scales` y `tidyr` para el análisis descriptivo y las figuras; y `sf` para el
 procesamiento geoespacial y los mapas coropléticos. Las referencias completas de cada paquete,
-con su número de versión exacto, están en `datos_17.referencias-bibliograficas.md`.
+con su número de versión exacto, están en `datos_17.referencias-bibliograficas.md`. Para mejor
+usabilidad se utilizó RStudio RStudio 2026.06.0 Build 242.  
 
 ## Disponibilidad de datos y materiales
 
