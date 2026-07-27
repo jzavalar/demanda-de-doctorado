@@ -100,6 +100,7 @@ mapa_coropletico <- function(datos, variable, etiqueta_leyenda, archivo, titulo_
     filter(!is.na(.data[[variable]])) %>%
     count(.data[[variable]], name = "n")
   names(conteo)[1] <- "entidad"
+  n_total <- sum(conteo$n)
 
   geo_join <- geo %>% left_join(conteo, by = "entidad") %>%
     mutate(n = ifelse(is.na(n), 0, n))
@@ -108,8 +109,12 @@ mapa_coropletico <- function(datos, variable, etiqueta_leyenda, archivo, titulo_
     geom_sf(aes(fill = n), color = "white", linewidth = 0.15) +
     scale_fill_gradient(low = "#D9E2F3", high = "#1F3864", name = etiqueta_leyenda,
                          breaks = scales::pretty_breaks()) +
-    theme_void(base_size = 11) +
-    theme(legend.position = "right")
+    labs(subtitle = paste0("n = ", n_total)) +
+    theme_void(base_size = 11, base_family = "Times") +
+    theme(legend.position = "right",
+          legend.text = element_text(family = "Times"),
+          legend.title = element_text(family = "Times", face = "bold"),
+          plot.subtitle = element_text(size = 9.5, color = "gray30", family = "Times", hjust = 0))
 
   ggsave(file.path(dir_figuras, archivo), p, width = 7, height = 5.5, dpi = 300, bg = "white")
   geo_join %>% st_drop_geometry() %>% select(entidad, n) %>% arrange(desc(n))

@@ -8,7 +8,8 @@ figuras, **¿cuáles son realmente necesarias como figura y cuáles se pueden re
 tabla?** — y valida el diseño resultante contra los criterios editoriales de RIDE.
 
 **Revista de destino:** [RIDE](https://www.ride.org.mx/).
-**Última actualización:** 26 de julio de 2026 (se agregó el análisis exploratorio MCA).
+**Última actualización:** 27 de julio de 2026 (nota de tamaño de muestra y consistencia
+tipográfica corregidas en las 9 figuras esenciales; ver secciones 5 y 6).
 
 ---
 
@@ -103,6 +104,8 @@ como imagen, su información ya vive en la tabla correspondiente.
 | Evaluar necesidad de cada figura | Sección 13 | ✅ Cumplido — ver clasificación completa arriba |
 | Fuente ("Fuente: Elaboración propia") debajo, como texto de Word | Sección 13 | ✅ Cumplido — no se encontró `caption =` en ninguno de los tres scripts generadores (incluido `datos_19.mca-exploratorio.R`, que ya se escribió sin este problema desde el inicio); la fuente vive únicamente en `pies-de-figura.md`, para pegarse como texto de Word, no está incrustada en el `.png` |
 | Título arriba, en negritas, como texto de Word (no incrustado en el `.png`) | Sección 13 | ✅ **Corregido el 26-jul-2026** — ver sección 4 (actualizada) |
+| Nota de tamaño de muestra dentro del área de la figura | Sección 13 (ejemplo oficial) | ✅ **Corregido el 27-jul-2026** — ver sección 5 |
+| Consistencia tipográfica entre figuras (no exigida explícitamente por RIDE, pero relevante frente al cuerpo en Times New Roman 12) | Sección 12 (formato general) | ✅ **Corregido el 27-jul-2026** — ver sección 6 |
 
 ## 4. Hallazgo de formato — RESUELTO el 26 de julio de 2026
 
@@ -137,18 +140,39 @@ miles de píxeles oscuros (el texto del título); después, 0 píxeles oscuros e
 esenciales — confirmando que el título ya no está incrustado, sin depender solo de una
 inspección visual.
 
-## 5. Observación menor (no bloqueante): nota de tamaño de muestra
+## 5. Nota de tamaño de muestra — RESUELTO el 27 de julio de 2026
 
 El ejemplo oficial de RIDE (`03_Ejemplo_Formato_Figura_RIDE.png`) incluye una nota de tamaño de
-muestra total dentro del área de la figura (p. ej. "180 RESPUESTAS"). Las figuras univariadas
-(fig01, fig02, fig09, fig10) sí incluyen `n` y `%` como etiqueta de **cada barra**
-(`geom_text(aes(label = paste0(n, " (", round(pct,1), "%)")))`), lo que comunica el tamaño de
-muestra de forma más granular que el ejemplo oficial. No es un incumplimiento, pero si se
-quiere replicar exactamente el formato del ejemplo, se puede añadir además una anotación única
-con el total (`n total = 100`) en una esquina del gráfico. fig13 (cruce) y los dos mapas
-(fig14, fig15) no llevan actualmente esa nota — recomendable agregarla si el espacio lo permite.
+muestra total dentro del área de la figura (p. ej. "180 RESPUESTAS"). Se detectó que esto era
+inconsistente entre las 9 figuras esenciales: fig01/02/09/10 solo tenían `n`/`%` por categoría
+(no un total), y fig13 (cruce RQ7) y los dos mapas (fig14, fig15) no llevaban ninguna nota.
 
-## 6. Pendientes antes de dar por cerrada esta validación
+**Corrección aplicada:** se agregó una nota `n = N` dentro del área de cada una de las 9
+figuras, usando el espacio de subtítulo de ggplot2 (`labs(subtitle = ...)`) — no el de título,
+que se eliminó a propósito por el hallazgo de la sección 4. Es una nota de dato (análoga a
+"180 RESPUESTAS" del ejemplo oficial), no un título editorial, así que no reintroduce el
+problema ya corregido.
+
+**Verificación:** se comprobó con análisis de imagen que la nota aparece en las 9 figuras
+(dentro de la franja superior correspondiente a cada tipo de gráfico — los mapas la muestran un
+poco más abajo que las barras, por cómo `theme_void()` reserva espacio) y que la franja más
+externa (filas 0-12 px) sigue sin contenido, confirmando que el título no se reintrodujo.
+
+## 6. Consistencia tipográfica — RESUELTO el 27 de julio de 2026
+
+Se detectó que `datos_12.analisis-descriptivo.R` y `datos_13.mapa-entidades.R` no especificaban
+`family` en sus temas (usaban la fuente sans-serif por defecto del sistema, DejaVu Sans),
+mientras que `datos_19.mca-exploratorio.R` sí usaba `family = "Times"` (resuelto a TeX Gyre
+Termes). Esto habría producido 7 de las 9 figuras del manuscrito en una tipografía distinta a
+las otras 2, y distinta también del cuerpo del texto (Times New Roman 12, exigido en la
+sección 12 de las normas de RIDE).
+
+**Corrección aplicada:** se agregó `base_family = "Times"` (y `family = "Times"` en las
+etiquetas de texto y leyendas) a las tres funciones generadoras de figura de `datos_12` y a la
+función de mapas de `datos_13`, igualando el estilo tipográfico de las 9 figuras esenciales.
+
+
+## 7. Pendientes antes de dar por cerrada esta validación
 
 - [x] ~~Aplicar la corrección de la sección 4 (quitar título incrustado)~~ — **Hecho el
       26-jul-2026**, en las 15 figuras (no solo las 7 esenciales), con verificación por
@@ -158,7 +182,7 @@ con el total (`n total = 100`) en una esquina del gráfico. fig13 (cruce) y los 
       con `Sys.setlocale` corregido (el script compartido originalmente producía advertencias de
       codificación y un error de parseo sin ese ajuste). Figuras 1-2 del manuscrito final.
 - [ ] Actualizar `pies-de-figura.md` para incluir únicamente las 9 figuras finales, ya
-      renumeradas consecutivamente (Figura 1 a Figura 9) — ver sección 7 de este documento para
+      renumeradas consecutivamente (Figura 1 a Figura 9) — ver sección 8 de este documento para
       el texto ya listo; el archivo generado automáticamente sigue mostrando las 17 figuras con
       su numeración de generación (correcto mientras conviven en este repositorio, ver nota al
       inicio de `pies-de-figura.md`).
@@ -169,7 +193,7 @@ con el total (`n total = 100`) en una esquina del gráfico. fig13 (cruce) y los 
       `Cruce_situacion_laboral__mot` (RQ6, no significativas) se citan en el texto aunque no
       tengan figura asociada.
 
-## 7. Numeración final y texto listo para pegar en Word (9 figuras)
+## 8. Numeración final y texto listo para pegar en Word (9 figuras)
 
 **Figura 1.** Panorama exploratorio de las variables de demanda (análisis de correspondencias múltiples): vista general.
 

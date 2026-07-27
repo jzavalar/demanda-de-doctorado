@@ -148,14 +148,24 @@ grafico_barras <- function(datos, variable, etiqueta, archivo, ancho = 7, alto =
   # necesitan mas espacio vertical para que las etiquetas no queden amontonadas.
   if (is.null(alto)) alto <- max(4, 0.32 * nrow(tabla) + 1.2)
 
+  n_total <- sum(tabla$n)
+
+  # Nota de tamano de muestra DENTRO del area de la figura (requerido por el
+  # ejemplo oficial de RIDE, ver 03_Ejemplo_Formato_Figura_RIDE.png: "180
+  # RESPUESTAS" dentro de la imagen). Se usa el espacio de subtitulo (no el de
+  # titulo, que se elimino a proposito): es una nota de dato (n=), no un
+  # titulo editorial, y al vivir en el subtitulo no se superpone con las
+  # barras ni con las etiquetas de cada categoria.
   p <- ggplot(tabla, aes(x = reorder(categoria, n), y = n)) +
     geom_col(fill = "#1F3864") +
-    geom_text(aes(label = paste0(n, " (", round(pct, 1), "%)")), hjust = -0.05, size = 3.2) +
+    geom_text(aes(label = paste0(n, " (", round(pct, 1), "%)")), hjust = -0.05, size = 3.2,
+              family = "Times") +
     coord_flip(clip = "off") +
-    labs(x = NULL, y = "Frecuencia (n)") +
+    labs(x = NULL, y = "Frecuencia (n)", subtitle = paste0("n = ", n_total)) +
     scale_y_continuous(expand = expansion(mult = c(0, 0.3))) +
-    theme_minimal(base_size = 11) +
-    theme(panel.grid.minor = element_blank())
+    theme_minimal(base_size = 11, base_family = "Times") +
+    theme(panel.grid.minor = element_blank(),
+          plot.subtitle = element_text(size = 9.5, color = "gray30", family = "Times"))
 
   ggsave(file.path(dir_figuras, archivo), p, width = ancho, height = alto, dpi = 300, bg = "white")
   tabla
@@ -238,14 +248,18 @@ grafico_barras_apiladas <- function(datos, var_x, var_fill, etiqueta, archivo, a
     filter(!is.na(.data[[var_x]]), !is.na(.data[[var_fill]])) %>%
     count(.data[[var_x]], .data[[var_fill]], name = "n")
   names(tabla)[1:2] <- c("x", "fill")
+  n_total <- sum(tabla$n)
 
   p <- ggplot(tabla, aes(x = x, y = n, fill = fill)) +
     geom_col(position = "fill") +
     scale_y_continuous(labels = percent_format()) +
-    labs(x = NULL, y = "% dentro de cada categoría", fill = NULL) +
+    labs(x = NULL, y = "% dentro de cada categoría", fill = NULL,
+         subtitle = paste0("n = ", n_total)) +
     coord_flip() +
-    theme_minimal(base_size = 10) +
-    theme(legend.position = "bottom")
+    theme_minimal(base_size = 10, base_family = "Times") +
+    theme(legend.position = "bottom",
+          legend.text = element_text(family = "Times"),
+          plot.subtitle = element_text(size = 9, color = "gray30", family = "Times"))
   ggsave(file.path(dir_figuras, archivo), p, width = ancho, height = alto, dpi = 300, bg = "white")
 }
 

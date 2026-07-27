@@ -229,10 +229,12 @@ panel_a <- ggplot2::ggplot(coord_mca, ggplot2::aes(x = dim1, y = dim2)) +
   ggplot2::coord_cartesian(xlim = full_xlim, ylim = full_ylim) +
   ggplot2::labs(
     x = paste0("Dimensión 1 (", inercia_dim1, "% de inercia)"),
-    y = paste0("Dimensión 2 (", inercia_dim2, "% de inercia)")
+    y = paste0("Dimensión 2 (", inercia_dim2, "% de inercia)"),
+    subtitle = paste0("n = ", nrow(datos_mca))
   ) +
   tema_base +
-  ggplot2::theme(legend.position = "right")
+  ggplot2::theme(legend.position = "right",
+                 plot.subtitle = ggplot2::element_text(size = 9.5, color = "gray30", family = "Times"))
 
 panel_b <- ggplot2::ggplot(zoom_data, ggplot2::aes(x = dim1, y = dim2)) +
   ggplot2::geom_vline(xintercept = 0, linetype = "dashed", color = "gray50", linewidth = 0.5) +
@@ -251,11 +253,13 @@ panel_b <- ggplot2::ggplot(zoom_data, ggplot2::aes(x = dim1, y = dim2)) +
   ggplot2::coord_cartesian(xlim = zoom_xlim, ylim = zoom_ylim) +
   ggplot2::labs(
     x = paste0("Dimensión 1 (", inercia_dim1, "% de inercia)"),
-    y = paste0("Dimensión 2 (", inercia_dim2, "% de inercia)")
+    y = paste0("Dimensión 2 (", inercia_dim2, "% de inercia)"),
+    subtitle = paste0("n = ", nrow(zoom_data), " categorías mostradas")
   ) +
   tema_base +
   ggplot2::theme(
     panel.border    = ggplot2::element_rect(color = "gray40", fill = NA, linewidth = 0.6),
+    plot.subtitle   = ggplot2::element_text(size = 9.5, color = "gray30", family = "Times"),
     legend.position = "right"
   )
 
