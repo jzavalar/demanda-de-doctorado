@@ -1,13 +1,14 @@
 # Justificación y validación editorial de las figuras del manuscrito
 
-**Documento complementario a:** `datos_11.plan-analisis-datos.md` (fija el diseño analítico) y
-`datos_12.analisis-descriptivo.R` / `datos_13.mapa-entidades.R` (generan las 15 figuras en
-`datos_15.figuras/`). Este documento responde a una pregunta distinta: de esas 15 figuras,
-**¿cuáles son realmente necesarias como figura y cuáles se pueden resumir en una tabla?** —
-y valida el diseño resultante contra los criterios editoriales de RIDE.
+**Documento complementario a:** `datos_11.plan-analisis-datos.md` (fija el diseño analítico),
+`datos_12.analisis-descriptivo.R` / `datos_13.mapa-entidades.R` (generan 15 figuras) y
+`datos_19.mca-exploratorio.R` (genera 2 figuras exploratorias adicionales) — 17 figuras en
+total en `datos_15.figuras/`. Este documento responde a una pregunta distinta: de esas 17
+figuras, **¿cuáles son realmente necesarias como figura y cuáles se pueden resumir en una
+tabla?** — y valida el diseño resultante contra los criterios editoriales de RIDE.
 
 **Revista de destino:** [RIDE](https://www.ride.org.mx/).
-**Última actualización:** 26 de julio de 2026.
+**Última actualización:** 26 de julio de 2026 (se agregó el análisis exploratorio MCA).
 
 ---
 
@@ -28,19 +29,26 @@ univariadas y cruces bivariados calculados), el criterio se puede aplicar de for
 si una figura solo repite números que ya están en una hoja de ese archivo, sin agregar un
 patrón visual que la tabla no muestre, la figura sobra.
 
-## 2. Clasificación de las 15 figuras generadas
+## 2. Clasificación de las 17 figuras generadas
 
-### 2.1 Esenciales — se conservan como figura (7)
+### 2.1 Esenciales — se conservan como figura (9)
 
-| Figura | Contenido | Por qué no admite tabla |
-|---|---|---|
-| **fig01 — Interés en el doctorado** | Sí/No, n = 113, con IC 95% Wilson | Resultado insignia del estudio (88.5 %); la figura comunica magnitud **e** incertidumbre a la vez |
-| **fig02 — Línea de doctorado de interés** | 9 categorías, n = 100 | Informa directamente el diseño curricular; no está cubierta por ninguna otra figura |
-| **fig09 — Motivación principal** | 4 categorías, n = 100 | Sustenta el perfil de egreso en la Discusión |
-| **fig10 — Plazo estimado para iniciar** | 7 categorías ordinales, n = 100 | El hallazgo es la **forma** de la distribución (sesgo hacia "1 año"), no solo el número |
-| **fig13 — Área de maestría × línea de interés (RQ7)** | Cruce 5×9, asociación significativa (Fisher simulado p = 0.037; V de Cramér = 0.417) | Es el único cruce bivariado con relación relevante y no trivial; visualizar el patrón de coherencia formación-interés es más claro en figura que en una tabla de 45 celdas |
-| **fig14 — Mapa: entidad donde cursó la maestría** | Coroplético, n = 100 | Caso más claro de "no reemplazable por tabla": la dispersión espacial (RQ8) es precisamente lo que una tabla no puede mostrar de un vistazo |
-| **fig15 — Mapa: entidad de residencia actual** | Coroplético, n = 100 | Ídem |
+Se agregan primero las 2 figuras del MCA exploratorio (acordado con el equipo el 26-jul-2026
+para presentarse **al inicio de Resultados**, antes de RQ1, como panorama general — no como
+prueba confirmatoria; ver `datos_18.borrador-metodologia-resultados.md`). Esto desplaza la
+numeración final del manuscrito en +2 respecto a la versión anterior de este documento.
+
+| # final | Figura | Contenido | Por qué no admite tabla |
+|---|---|---|---|
+| **Figura 1** | fig16 — MCA, vista general | Panorama exploratorio, n = 98, 6 variables de demanda | Un MCA existe precisamente para mostrar relaciones geométricas entre categorías de varias variables a la vez — imposible tabular sin perder el hallazgo. **Explica solo 17.4 % de la inercia total; se presenta como exploratorio, no confirmatorio** |
+| **Figura 2** | fig17 — MCA, detalle del cúmulo | Acercamiento a las 15 categorías centrales, mismo análisis | Evita la sobreposición de etiquetas de la Figura 1; mismo argumento que arriba |
+| **Figura 3** | fig01 — Interés en el doctorado | Sí/No, n = 113, con IC 95% Wilson | Resultado insignia del estudio (88.5 %); la figura comunica magnitud **e** incertidumbre a la vez |
+| **Figura 4** | fig02 — Línea de doctorado de interés | 9 categorías, n = 100 | Informa directamente el diseño curricular; no está cubierta por ninguna otra figura |
+| **Figura 5** | fig09 — Motivación principal | 4 categorías, n = 100 | Sustenta el perfil de egreso en la Discusión |
+| **Figura 6** | fig10 — Plazo estimado para iniciar | 7 categorías ordinales, n = 100 | El hallazgo es la **forma** de la distribución (sesgo hacia "1 año"), no solo el número |
+| **Figura 7** | fig13 — Área de maestría × línea de interés (RQ7) | Cruce 5×9, asociación significativa (Fisher simulado p = 0.034; V de Cramér = 0.417) | Es el único cruce bivariado confirmatorio con relación relevante; visualizar el patrón de coherencia formación-interés es más claro en figura que en una tabla de 45 celdas — y coherente con el panorama ya insinuado en la Figura 1 |
+| **Figura 8** | fig14 — Mapa: entidad donde cursó la maestría | Coroplético, n = 100 | Caso más claro de "no reemplazable por tabla": la dispersión espacial (RQ8) es precisamente lo que una tabla no puede mostrar de un vistazo |
+| **Figura 9** | fig15 — Mapa: entidad de residencia actual | Coroplético, n = 100 | Ídem |
 
 ### 2.2 Redundantes con una tabla ya existente — se retiran como figura (6)
 
@@ -78,22 +86,22 @@ generar nada nuevo, los números ya están en `datos_14`.
 
 ### 2.4 Resumen
 
-**15 figuras generadas → 7 esenciales para el manuscrito** (fig01, fig02, fig09, fig10, fig13,
-fig14, fig15) **+ 1 tabla de perfil sociodemográfico** (consolidando fig03/04/07/08) **+ 2
-tablas de cruce sin figura** (fig11, fig12) **+ 2 figuras de barras retiradas por redundancia
-con mapa** (fig05, fig06). Ninguna de las 18 hojas de `datos_14.tablas-resultados.xlsx` se
-pierde: las figuras retiradas simplemente no se duplican como imagen, su información ya vive
-en la tabla correspondiente.
+**17 figuras generadas → 9 esenciales para el manuscrito** (2 exploratorias del MCA + fig01,
+fig02, fig09, fig10, fig13, fig14, fig15) **+ 1 tabla de perfil sociodemográfico** (consolidando
+fig03/04/07/08) **+ 2 tablas de cruce sin figura** (fig11, fig12) **+ 2 figuras de barras
+retiradas por redundancia con mapa** (fig05, fig06). Ninguna de las 18 hojas de
+`datos_14.tablas-resultados.xlsx` se pierde: las figuras retiradas simplemente no se duplican
+como imagen, su información ya vive en la tabla correspondiente.
 
 ## 3. Checklist de validación editorial RIDE
 
 | Criterio RIDE | Regla | Estatus |
 |---|---|---|
-| Formato de archivo | `.png` | ✅ Cumplido — las 15 imágenes se exportan con `ggsave(..., dpi = 300, bg = "white")` |
-| Numeración | Consecutiva en arábigos | ✅ Cumplido — Figura 1 a Figura 15 en `pies-de-figura.md`; tras retirar las 8 redundantes, renumerar consecutivamente a Figura 1-7 en el manuscrito final |
+| Formato de archivo | `.png` | ✅ Cumplido — las 17 imágenes se exportan con `ggsave(..., dpi = 300, bg = "white")` |
+| Numeración | Consecutiva en arábigos | ✅ Cumplido — tras retirar las 8 redundantes, la numeración final del manuscrito es Figura 1 a Figura 9 (ver tabla de la sección 2.1) |
 | No duplicar datos entre tabla y figura | Sección 13 de la guía RIDE | ✅ Cumplido **tras aplicar la sección 2** de este documento — antes de esta revisión, fig05/fig06 sí duplicaban a fig14/fig15 |
 | Evaluar necesidad de cada figura | Sección 13 | ✅ Cumplido — ver clasificación completa arriba |
-| Fuente ("Fuente: Elaboración propia") debajo, como texto de Word | Sección 13 | ✅ Cumplido — no se encontró `caption =` en ninguno de los dos scripts generadores; la fuente vive únicamente en `pies-de-figura.md`, para pegarse como texto de Word, no está incrustada en el `.png` |
+| Fuente ("Fuente: Elaboración propia") debajo, como texto de Word | Sección 13 | ✅ Cumplido — no se encontró `caption =` en ninguno de los tres scripts generadores (incluido `datos_19.mca-exploratorio.R`, que ya se escribió sin este problema desde el inicio); la fuente vive únicamente en `pies-de-figura.md`, para pegarse como texto de Word, no está incrustada en el `.png` |
 | Título arriba, en negritas, como texto de Word (no incrustado en el `.png`) | Sección 13 | ✅ **Corregido el 26-jul-2026** — ver sección 4 (actualizada) |
 
 ## 4. Hallazgo de formato — RESUELTO el 26 de julio de 2026
@@ -145,12 +153,74 @@ con el total (`n total = 100`) en una esquina del gráfico. fig13 (cruce) y los 
 - [x] ~~Aplicar la corrección de la sección 4 (quitar título incrustado)~~ — **Hecho el
       26-jul-2026**, en las 15 figuras (no solo las 7 esenciales), con verificación por
       análisis de imagen (no solo visual).
-- [ ] Actualizar `pies-de-figura.md` para incluir únicamente las 7 figuras finales, ya
-      renumeradas consecutivamente (Figura 1 a Figura 7), cuando se arme el manuscrito final
-      (hoy sigue listando las 15, que es correcto mientras conviven en este repositorio).
+- [x] ~~Integrar el MCA exploratorio~~ — **Hecho el 26-jul-2026**: `datos_19.mca-exploratorio.R`
+      recalculado contra los datos actuales (n=98 tras excluir 2 sin dato en situación laboral),
+      con `Sys.setlocale` corregido (el script compartido originalmente producía advertencias de
+      codificación y un error de parseo sin ese ajuste). Figuras 1-2 del manuscrito final.
+- [ ] Actualizar `pies-de-figura.md` para incluir únicamente las 9 figuras finales, ya
+      renumeradas consecutivamente (Figura 1 a Figura 9) — ver sección 7 de este documento para
+      el texto ya listo; el archivo generado automáticamente sigue mostrando las 17 figuras con
+      su numeración de generación (correcto mientras conviven en este repositorio, ver nota al
+      inicio de `pies-de-figura.md`).
 - [ ] Construir la Tabla de perfil sociodemográfico (fig03/04/07/08 consolidadas) a partir de
       las hojas `Univ_genero`, `Univ_edad`, `Univ_area_maestria` y `Univ_situacion_laboral` de
       `datos_14.tablas-resultados.xlsx` — no requiere volver a calcular nada.
 - [ ] Confirmar en el manuscrito que las tablas de `Cruce_situacion_laboral__tie` y
       `Cruce_situacion_laboral__mot` (RQ6, no significativas) se citan en el texto aunque no
       tengan figura asociada.
+
+## 7. Numeración final y texto listo para pegar en Word (9 figuras)
+
+**Figura 1.** Panorama exploratorio de las variables de demanda (análisis de correspondencias múltiples): vista general.
+
+*Nota:* n = 98 personas interesadas (2 excluidas por dato faltante en situación laboral). Análisis exploratorio, no confirmatorio. La proximidad entre categorías sugiere asociación; el color indica la contribución de cada categoría a la formación de las dos dimensiones mostradas, que en conjunto explican solo el 17.4 % de la inercia (variabilidad) total entre categorías — se presenta como panorama general, no como evidencia confirmatoria. El área sombreada corresponde a la región ampliada en la Figura 2.
+
+*Fuente: Elaboración propia.*
+
+**Figura 2.** Panorama exploratorio de las variables de demanda (análisis de correspondencias múltiples): detalle del cúmulo central (n = 15 categorías).
+
+*Nota:* ampliación de la región sombreada en la Figura 1, para evitar la sobreposición de etiquetas. El color indica la contribución de cada categoría a la formación de las dos dimensiones.
+
+*Fuente: Elaboración propia.*
+
+**Figura 3.** Interés en cursar el doctorado
+
+*Fuente: Elaboración propia.*
+
+**Figura 4.** Línea de doctorado de interés
+
+*Fuente: Elaboración propia.*
+
+**Figura 5.** Motivación principal para cursar el doctorado
+
+*Fuente: Elaboración propia.*
+
+**Figura 6.** Plazo estimado para iniciar el doctorado
+
+*Fuente: Elaboración propia.*
+
+**Figura 7.** Área de la maestría según línea de doctorado de interés (RQ7)
+
+*Fuente: Elaboración propia.*
+
+**Figura 8.** Distribución por entidad donde cursaron la maestría, personas interesadas en el doctorado.
+
+*Fuente: Elaboración propia.*
+
+**Figura 9.** Distribución por entidad de residencia actual, personas interesadas en el doctorado.
+
+*Fuente: Elaboración propia.*
+
+**Correspondencia archivo → figura final:**
+
+| Figura final | Archivo |
+|---|---|
+| Figura 1 | `fig16_mca_vista_general.png` |
+| Figura 2 | `fig17_mca_detalle_cumulo.png` |
+| Figura 3 | `fig01_interes_doctorado.png` |
+| Figura 4 | `fig02_linea_doctorado.png` |
+| Figura 5 | `fig09_motivacion.png` |
+| Figura 6 | `fig10_tiempo_inicio.png` |
+| Figura 7 | `fig13_area_x_linea.png` |
+| Figura 8 | `fig14_mapa_estado_estudios.png` |
+| Figura 9 | `fig15_mapa_estado_residencia.png` |

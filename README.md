@@ -47,10 +47,11 @@ despliegan de forma especial en esa forma exacta.
 | 13 | [`datos_13.mapa-entidades.R`](datos_13.mapa-entidades.R) | Script de mapas coropléticos por entidad (estudios y residencia) | R |
 | 13 | [`datos_13.geojson-entidades-mexico.geojson`](datos_13.geojson-entidades-mexico.geojson) | Geometrías de los 32 estados de México, disueltas a nivel estatal a partir de los shapefiles municipales CONABIO 2020-2023 (PhantomInsights, MIT — referencia completa en [`datos_17`](datos_17.referencias-bibliograficas.md)), guardadas localmente para que el mapa no dependa de una fuente en línea | GeoJSON |
 | 14 | [`datos_14.tablas-resultados.xlsx`](datos_14.tablas-resultados.xlsx) | Todas las tablas de resultados (18 hojas: proporciones clave, univariado, bivariado, perfil síntesis, texto libre) | Excel |
-| 15 | [`datos_15.figuras/`](datos_15.figuras) — ver su [README](datos_15.figuras/README.md) | Las 15 figuras (`.png`) del análisis y los mapas, más `pies-de-figura.md` (texto listo para pegar en el artículo, formato RIDE) y las tablas de apoyo de los mapas en CSV (`datos_15.mapa-estado-estudios.csv`, `datos_15.mapa-estado-residencia.csv`) | PNG / Markdown / CSV |
+| 15 | [`datos_15.figuras/`](datos_15.figuras) — ver su [README](datos_15.figuras/README.md) | Las 17 figuras (`.png`) del análisis descriptivo, bivariado, los mapas y el panorama exploratorio MCA, más `pies-de-figura.md` (texto listo para pegar en el artículo, formato RIDE) y las tablas de apoyo en CSV (mapas y MCA) | PNG / Markdown / CSV |
 | 16 | [`datos_16.validacion-figuras-manuscrito.md`](datos_16.validacion-figuras-manuscrito.md) | Clasifica las 15 figuras generadas en esenciales (7) vs. redundantes con tabla ya existente (8), y valida su diseño contra los criterios editoriales de RIDE — el hallazgo de formato que documentaba (título incrustado en el PNG) ya está corregido | Markdown |
 | 17 | [`datos_17.referencias-bibliograficas.md`](datos_17.referencias-bibliograficas.md) | Referencias en formato APA 7: fuentes de datos externas (geojson) y herramientas de software (R, RStudio, 9 paquetes), listas para copiar a la sección de Referencias del artículo | Markdown |
-| 18 | [`datos_18.borrador-metodologia-resultados.md`](datos_18.borrador-metodologia-resultados.md) | Borrador detallado de las secciones Materiales y Métodos y Resultados del manuscrito, con la numeración final de figuras/tablas, para revisión del equipo | Markdown |
+| 18 | [`datos_18.borrador-metodologia-resultados.md`](datos_18.borrador-metodologia-resultados.md) | Borrador detallado de las secciones Materiales y Métodos y Resultados del manuscrito, con la numeración final de figuras/tablas (incluido el MCA exploratorio), para revisión del equipo | Markdown |
+| 19 | [`datos_19.mca-exploratorio.R`](datos_19.mca-exploratorio.R) | Análisis de correspondencias múltiples (MCA), panorama exploratorio de las 6 variables de demanda, para presentarse al inicio de Resultados | R |
 | — | [`LICENSE.txt`](LICENSE.txt) | Licencia y forma de citar el conjunto de datos | Texto plano |
 
 ## 2. El instrumento
@@ -260,20 +261,22 @@ poblacional generalizable, dado el muestreo no probabilístico (ver limitaciones
 
 ## 10. Figuras del manuscrito: validación editorial RIDE
 
-`datos_16.validacion-figuras-manuscrito.md` audita las 15 figuras generadas en
+`datos_16.validacion-figuras-manuscrito.md` audita las 17 figuras generadas en
 `datos_15.figuras/` con el mismo criterio de necesidad que ya se aplicó a los datos: una figura
 se conserva solo si visualiza un hallazgo central o un patrón (espacial, de asociación) que
 ninguna tabla puede transmitir. Con `datos_14.tablas-resultados.xlsx` ya cubriendo las 18
 combinaciones univariadas y bivariadas, el documento aplica ese criterio de forma estricta.
 
-**Resultado de la clasificación:** de las 15 figuras, se conservan **7** como esenciales
-(interés general, línea de doctorado, motivación, plazo de inicio, el cruce área×línea que sí
-resultó significativo (RQ7), y los dos mapas coropléticos de RQ8). Las otras 8 se retiran del
-manuscrito porque ya están cubiertas por una tabla existente sin pérdida de información: cuatro
-variables sociodemográficas simples (género, edad, área de maestría, situación laboral) se
-consolidan en una tabla de perfil; dos gráficos de barras por entidad quedan redundantes frente
-a los mapas que muestran la misma variable con más patrón visual; y dos cruces bivariados sin
-asociación significativa (RQ6) se reportan como tabla de contingencia, no como figura.
+**Resultado de la clasificación:** de las 17 figuras, se conservan **9** como esenciales: el
+panorama exploratorio multivariado (MCA, 2 figuras, presentado al inicio de Resultados, antes
+de RQ1 — ver sección 11), interés general, línea de doctorado, motivación, plazo de inicio, el
+cruce área×línea que sí resultó significativo (RQ7), y los dos mapas coropléticos de RQ8. Las
+otras 8 se retiran del manuscrito porque ya están cubiertas por una tabla existente sin pérdida
+de información: cuatro variables sociodemográficas simples (género, edad, área de maestría,
+situación laboral) se consolidan en una tabla de perfil; dos gráficos de barras por entidad
+quedan redundantes frente a los mapas que muestran la misma variable con más patrón visual; y
+dos cruces bivariados sin asociación significativa (RQ6) se reportan como tabla de
+contingencia, no como figura.
 
 El documento también deja registrado un **hallazgo de formato ya corregido**: al revisar el
 código de `datos_12.analisis-descriptivo.R` y `datos_13.mapa-entidades.R` se encontró que el
@@ -285,7 +288,40 @@ nuevos. La corrección ya se aplicó a las 15 figuras (se regeneraron todas desd
 verificó con análisis de imagen (Python/Pillow), no solo visualmente: la franja superior de las
 7 figuras esenciales pasó de miles de píxeles oscuros (el texto del título) a cero.
 
-## 11. Historial de versiones
+## 11. Panorama exploratorio multivariado (MCA)
+
+`datos_19.mca-exploratorio.R` genera un análisis de correspondencias múltiples (MCA) sobre las
+6 variables de demanda (género, edad, área de maestría, situación laboral, motivación, tiempo
+de inicio), acordado con el equipo el 26-jul-2026 como **panorama exploratorio al inicio de
+Resultados** — antes de RQ1, no como prueba confirmatoria ni como sustituto de las pruebas
+pareadas de RQ6-RQ7.
+
+**Resultado:** n = 98 (2 excluidos por dato faltante real en situación laboral). Las dos
+primeras dimensiones explican 9.5 % y 7.9 % de la inercia (17.4 % acumulado) — una fracción
+modesta de la variabilidad total, por lo que el hallazgo se enmarca explícitamente como
+exploratorio, no confirmatorio, en el propio texto (no en una nota al pie). El patrón visible
+es coherente con la asociación significativa ya confirmada en RQ7 (área de maestría × línea de
+interés).
+
+Al recalcularlo contra los datos actuales (no se reciclaron números de una iteración anterior
+del proyecto) se encontraron y corrigieron dos problemas reales en el script compartido por el
+equipo: faltaba fijar el *locale* a UTF-8 (producía advertencias de codificación y un error de
+parseo), y se cargaba el paquete `factoextra` sin usar ninguna de sus funciones.
+
+**Nota de robustez:** al integrar este script se detectó que `datos_12.analisis-descriptivo.R`
+sobrescribía por completo `pies-de-figura.md` sin preservar lo que `datos_13`/`datos_19` ya
+hubieran escrito. Los tres scripts ahora usan un esquema de bloques con marcadores que garantiza
+el orden final (MCA → `datos_12` → mapas) sin importar en qué orden se ejecuten — verificado
+corriendo `datos_12` una segunda vez después de los otros dos y confirmando que no se pierde
+nada.
+
+Detalle completo, argumentación de la decisión y relación con un análisis exploratorio más
+amplio de una iteración anterior del proyecto (una matriz de V de Cramér entre 15 pares de
+variables, no retomada por ser inconsistente con el criterio de no explorar cruces sin pregunta
+de investigación pre-especificada) en la sección 8 de
+[`datos_11.plan-analisis-datos.md`](datos_11.plan-analisis-datos.md).
+
+## 12. Historial de versiones
 
 | Fecha | Cambio |
 |---|---|
@@ -309,3 +345,4 @@ verificó con análisis de imagen (Python/Pillow), no solo visualmente: la franj
 | 26-jul-2026 | Se agregó `datos_18.borrador-metodologia-resultados.md`: borrador detallado de Materiales y Métodos y Resultados, con la numeración final de figuras (1-7) y tablas (1-2) ya aplicada, para revisión del equipo antes de pasarlo al documento de Word. No incluye Discusión ni la integración del MCA, ambas pendientes de decisión. |
 | 26-jul-2026 | Se convirtió `datos_15b.tablas-mapas.xlsx` (2 hojas planas) en dos archivos CSV independientes, consistente con el resto del repositorio (CSV para tablas de una sola relación, sin dependencias de lectura). Se actualizó `datos_13.mapa-entidades.R` en consecuencia y se eliminó la dependencia de `writexl` en ese script. |
 | 26-jul-2026 | Se renombraron esos dos archivos a `datos_15.mapa-estado-estudios.csv` y `datos_15.mapa-estado-residencia.csv` (antes `datos_15b...`), y se actualizó `datos_13.mapa-entidades.R` para que los genere ya con estos nombres. |
+| 26-jul-2026 | **Decisión tomada:** se integra el MCA como panorama exploratorio al inicio de Resultados. Se agregó `datos_19.mca-exploratorio.R` (adaptado del script del equipo, con dos correcciones reales: falta de `Sys.setlocale` y dependencia `factoextra` sin usar), generando `fig16`/`fig17` + 2 tablas de apoyo. Se corrigió además un problema real de robustez: `datos_12.analisis-descriptivo.R` sobrescribía todo `pies-de-figura.md` sin preservar lo ya escrito por `datos_13`/`datos_19`; los tres scripts ahora usan un esquema de bloques con marcadores que garantiza el orden final sin importar el orden de ejecución. Se actualizaron `datos_11`, `datos_16` (9 figuras esenciales, numeración final 1-9) y `datos_18` (MCA integrado en Métodos y Resultados) en consecuencia. |

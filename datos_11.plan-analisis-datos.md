@@ -102,3 +102,45 @@ título arriba, fuente abajo, ver `01_Normas_Editoriales_RIDE_Guia_Cumplimiento.
 > **Estado: implementado el 26 de julio de 2026.** Ver `datos_12.analisis-descriptivo.R`,
 > `datos_13.mapa-entidades.R`, resultados en `datos_14.tablas-resultados.xlsx` y figuras en
 > `datos_15.figuras/`. Resumen de hallazgos en `README.md`, sección 9.
+
+## 8. Adición: panorama exploratorio multivariado (MCA)
+
+**Decisión (26-jul-2026):** se agrega un análisis de correspondencias múltiples (MCA) sobre las
+seis variables de demanda (género, edad, área de maestría, situación laboral, motivación,
+tiempo de inicio), como **panorama exploratorio al inicio de Resultados**, antes de RQ1 — no
+como prueba confirmatoria adicional ni como reemplazo de las pruebas pareadas de RQ6-RQ7.
+
+**Argumento:** para un lector no especializado en estadística (el perfil típico de un lector de
+RIDE interesado en gestión educativa, no necesariamente en inferencia estadística), un mapa
+donde se observa qué categorías tienden a agruparse es más intuitivo de leer de un vistazo que
+una tabla de p-valores. Se decidió colocarlo como introducción visual, no mezclado con RQ6-RQ7,
+para que no se confunda un hallazgo exploratorio con uno confirmatorio.
+
+**Salvedad obligatoria, declarada explícitamente en el texto (no en nota al pie):** las dos
+dimensiones del MCA explican en conjunto solo 17.4 % de la inercia (variabilidad) total entre
+categorías. Un lector sin entrenamiento estadístico tiende a leer "cercanía en el mapa" como
+"relación fuerte", cuando en realidad el mapa captura una fracción modesta de la variabilidad
+completa. Por eso el MCA se presenta como *exploratorio*, enmarcado como coherente con (no como
+evidencia adicional de) el hallazgo confirmatorio de RQ7, y no se le atribuye ningún p-valor ni
+conclusión que no tenga respaldo de una prueba de hipótesis pre-especificada.
+
+**Relación con un análisis previo de una iteración anterior del proyecto:** existió, en una
+etapa metodológica anterior de este proyecto (antes de adoptarse el diseño RQ1-RQ8 de este
+plan), una matriz exploratoria más amplia de V de Cramér entre los 15 pares posibles de estas
+mismas 6 variables, calculada específicamente como respaldo cuantitativo de un MCA. Esa matriz
+amplia **no se retoma** aquí, de forma consistente con la decisión ya tomada en la sección 4 de
+no explorar todos los cruces posibles entre variables sin una pregunta de investigación
+declarada de antemano. Los dos pares de esa matriz antigua que sí responden a una pregunta de
+investigación (situación laboral × tiempo de inicio; situación laboral × motivación) ya están
+cubiertos, recalculados con el método más riguroso de este plan (Fisher exacto + Monte Carlo),
+como RQ6.
+
+**Ejecución:** `datos_19.mca-exploratorio.R`, adaptado del script compartido por el equipo
+(v14, dos paneles independientes con leyenda propia). Se corrigieron dos problemas reales
+detectados al recalcularlo contra los datos actuales: (1) faltaba fijar el *locale* a UTF-8,
+lo que producía advertencias de codificación y un error de parseo; (2) se cargaba el paquete
+`factoextra` sin usar ninguna de sus funciones. Resultados: n = 98 (2 excluidos por dato
+faltante real en situación laboral), Dimensión 1 = 9.5 %, Dimensión 2 = 7.9 %, inercia
+acumulada = 17.4 %. Figuras: `datos_15.figuras/fig16_mca_vista_general.png` y
+`fig17_mca_detalle_cumulo.png`; clasificación editorial y numeración final (Figuras 1-2 del
+manuscrito) en `datos_16.validacion-figuras-manuscrito.md`, sección 2.1 y 7.
