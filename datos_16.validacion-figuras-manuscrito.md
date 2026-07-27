@@ -104,8 +104,18 @@ como imagen, su información ya vive en la tabla correspondiente.
 | Evaluar necesidad de cada figura | Sección 13 | ✅ Cumplido — ver clasificación completa arriba |
 | Fuente ("Fuente: Elaboración propia") debajo, como texto de Word | Sección 13 | ✅ Cumplido — no se encontró `caption =` en ninguno de los tres scripts generadores (incluido `datos_19.mca-exploratorio.R`, que ya se escribió sin este problema desde el inicio); la fuente vive únicamente en `pies-de-figura.md`, para pegarse como texto de Word, no está incrustada en el `.png` |
 | Título arriba, en negritas, como texto de Word (no incrustado en el `.png`) | Sección 13 | ✅ **Corregido el 26-jul-2026** — ver sección 4 (actualizada) |
-| Nota de tamaño de muestra dentro del área de la figura | Sección 13 (ejemplo oficial) | ✅ **Corregido el 27-jul-2026** — ver sección 5 |
+| Nota de tamaño de muestra dentro del área de la figura | Sección 13 — imagen `03_Ejemplo_Formato_Figura_RIDE.png`, confirmada por el usuario el 27-jul-2026 como parte del contenido oficial de la página "Envíos" de ride.org.mx (no una fuente aparte) | ✅ **Corregido el 27-jul-2026** — ver sección 5 |
 | Consistencia tipográfica entre figuras (no exigida explícitamente por RIDE, pero relevante frente al cuerpo en Times New Roman 12) | Sección 12 (formato general) | ✅ **Corregido el 27-jul-2026** — ver sección 6 |
+
+**Verificación directa contra la página oficial (27-jul-2026):** se intentó acceder directamente
+a `ride.org.mx/index.php/RIDE/about/submissions`; el sitio bloqueó la solicitud automatizada
+(error 409). Se verificó el contenido vigente mediante múltiples búsquedas independientes que
+devolvieron el mismo texto de esa página: *"Todas las fotografías, gráficas, esquemas y
+diagramas deben referirse como Figuras y estar en formato .png, y numerarse consecutivamente en
+el texto con números arábigos (p.ej. Figura 2)."* — coincide exactamente con lo ya implementado.
+El resto del formato (título arriba, fuente abajo, nota de muestra) está en esa misma página
+como contenido visual (`03_Ejemplo_Formato_Figura_RIDE.png`), no como texto indexable, lo que
+explica por qué no aparece en las búsquedas de solo texto — pero es igual de vinculante.
 
 ## 4. Hallazgo de formato — RESUELTO el 26 de julio de 2026
 
@@ -171,8 +181,57 @@ sección 12 de las normas de RIDE).
 etiquetas de texto y leyendas) a las tres funciones generadoras de figura de `datos_12` y a la
 función de mapas de `datos_13`, igualando el estilo tipográfico de las 9 figuras esenciales.
 
+## 7. Legibilidad de la Figura 2 (detalle del cúmulo del MCA) — RESUELTO el 27 de julio de 2026
 
-## 7. Pendientes antes de dar por cerrada esta validación
+Se detectó, con datos reales (no solo a simple vista), que 6 de las 15 categorías del panel de
+detalle tienen un valor de Dimensión 2 muy cercano a 0 (entre -0.06 y 0.11, en un eje que va de
+-0.83 a 0.91): "Social" (0.003), "Docencia" (0.033), "26 a 30" (0.039), "Empleado" (0.053),
+"Masculino" (0.093) y "Solo estudia" (0.106). Al estar tan cerca de la línea horizontal de
+referencia (Dimensión 2 = 0), sus etiquetas de texto quedaban superpuestas directamente sobre
+esa línea, dificultando la lectura — exactamente el problema reportado.
+
+**Causa:** `ggrepel::geom_text_repel()` evita solapar etiquetas entre sí y con los puntos, pero
+no tiene forma nativa de "evitar" una línea de referencia arbitraria como el `geom_hline` en
+y = 0; una categoría con coordenada casi exactamente en 0 arranca el algoritmo de reacomodo
+literalmente encima de la línea.
+
+**Corrección aplicada:** en `datos_19.mca-exploratorio.R`, antes de llamar a `geom_text_repel()`,
+se calcula un empuje vertical inicial (`nudge_y`) proporcional a qué tan cerca está cada
+categoría de la línea: mientras más cerca, mayor el empuje, en la dirección en la que ya se
+encontraba (arriba si Dimensión 2 ≥ 0, abajo si es negativa), garantizando una brecha mínima de
+0.16 unidades antes de que el algoritmo de repulsión reacomode las etiquetas entre sí. Las
+categorías ya alejadas de la línea (p. ej. "Docente" en -0.83) no reciben empuje adicional.
+
+**Verificación:** se extrajeron las posiciones finales de las 15 etiquetas después del repel
+(vía `ggplot_build()`) y se confirmó que **ninguna** queda a menos de 0.10 unidades de la línea
+de referencia (antes, 6 de 15 sí lo estaban) — no solo inspección visual.
+
+**Ajuste puntual (27-jul-2026):** por solicitud directa, la categoría "26 a 30" (dim2 = 0.039,
+muy cerca de la línea y muy cerca en el eje horizontal de "Masculino", dim2 = 0.093) se movió
+específicamente hacia **abajo** de la línea en lugar de hacia arriba, para separarla de
+"Masculino" y despejar esa zona del gráfico. Verificado con `ggplot_build()`: posición final de
+"26 a 30" en y = -0.12; "Masculino" en y = 0.16.
+
+## 7b. Ajuste puntual en la Figura 1 (vista general del MCA) — 27 de julio de 2026
+
+Por solicitud directa, la etiqueta "Alimentos" se movió 0.2 unidades hacia la derecha en la
+escala de Dimensión 1 (posición original: dim1 = 0.349; posición final verificada con
+`ggplot_build()`: dim1 = 0.549), para separarla mejor de las etiquetas cercanas.
+
+## 7c. Corrección de *n* incorrectos en `datos_15.figuras/README.md` — 27 de julio de 2026
+
+Se encontraron y corrigieron 3 valores de *n* incorrectos en la tabla de contenido de
+`datos_15.figuras/README.md` (no en las figuras mismas, cuya nota de tamaño de muestra siempre
+se calculó correctamente desde el código): `fig03` (género) y `fig04` (edad) decían *n* = 113
+cuando en realidad es 100 (ambas preguntas solo se hicieron a las 100 personas interesadas, no
+a las 113 respuestas totales); `fig08` (situación laboral) decía *n* = 100 cuando en realidad es
+98 (2 personas interesadas no respondieron esa pregunta específica). Se agregó además una tabla
+explicativa de por qué *n* toma tres valores distintos (113 / 100 / 98) a lo largo del
+repositorio, y cuáles figuras usan cada uno — ver `datos_15.figuras/README.md`, sección "Por qué
+el tamaño de muestra (n) varía entre figuras".
+
+
+## 8. Pendientes antes de dar por cerrada esta validación
 
 - [x] ~~Aplicar la corrección de la sección 4 (quitar título incrustado)~~ — **Hecho el
       26-jul-2026**, en las 15 figuras (no solo las 7 esenciales), con verificación por
@@ -182,18 +241,19 @@ función de mapas de `datos_13`, igualando el estilo tipográfico de las 9 figur
       con `Sys.setlocale` corregido (el script compartido originalmente producía advertencias de
       codificación y un error de parseo sin ese ajuste). Figuras 1-2 del manuscrito final.
 - [ ] Actualizar `pies-de-figura.md` para incluir únicamente las 9 figuras finales, ya
-      renumeradas consecutivamente (Figura 1 a Figura 9) — ver sección 8 de este documento para
+      renumeradas consecutivamente (Figura 1 a Figura 9) — ver sección 9 de este documento para
       el texto ya listo; el archivo generado automáticamente sigue mostrando las 17 figuras con
       su numeración de generación (correcto mientras conviven en este repositorio, ver nota al
       inicio de `pies-de-figura.md`).
-- [ ] Construir la Tabla de perfil sociodemográfico (fig03/04/07/08 consolidadas) a partir de
-      las hojas `Univ_genero`, `Univ_edad`, `Univ_area_maestria` y `Univ_situacion_laboral` de
-      `datos_14.tablas-resultados.xlsx` — no requiere volver a calcular nada.
-- [ ] Confirmar en el manuscrito que las tablas de `Cruce_situacion_laboral__tie` y
+- [x] ~~Construir la Tabla de perfil sociodemográfico~~ — **Hecho**: es la Tabla 1 de
+      `datos_18.borrador-metodologia-resultados.md`.
+- [x] ~~Confirmar en el manuscrito que las tablas de `Cruce_situacion_laboral__tie` y
       `Cruce_situacion_laboral__mot` (RQ6, no significativas) se citan en el texto aunque no
-      tengan figura asociada.
+      tengan figura asociada~~ — **Hecho**: es la Tabla 2, citada tanto en Resultados como en la
+      Discusión de `datos_18.borrador-metodologia-resultados.md` (27-jul-2026, primera versión
+      completa con Materiales y Métodos, Resultados y Discusión).
 
-## 8. Numeración final y texto listo para pegar en Word (9 figuras)
+## 9. Numeración final y texto listo para pegar en Word (9 figuras)
 
 **Figura 1.** Panorama exploratorio de las variables de demanda (análisis de correspondencias múltiples): vista general.
 

@@ -1,27 +1,31 @@
-# Borrador: Materiales y Métodos / Resultados
+# Primera versión completa: Materiales y Métodos / Resultados / Discusión
 
 **Artículo:** *Demanda Potencial para un Doctorado en Ciencias en Paisaje y Rurismo Rural*
 **Revista de destino:** RIDE — Revista Iberoamericana para la Investigación y el Desarrollo Educativo
 **Institución:** Colegio de Postgraduados, Campus Córdoba
-**Estado de este documento:** borrador de trabajo para revisión del equipo, **no** es la versión
-final maquetada en Word. Formato de entrega final (Times New Roman 12, interlineado 1.5,
-encabezados 16/14 pts centrados en negritas, figuras/tablas numeradas con título arriba y
-fuente abajo) se aplica al pasar este texto al documento del manuscrito — ver checklist en
-`01_Normas_Editoriales_RIDE_Guia_Cumplimiento.md`, sección 17.
-**Basado en:** `datos_11.plan-analisis-datos.md` (diseño), `datos_12.analisis-descriptivo.R` /
-`datos_13.mapa-entidades.R` / `datos_19.mca-exploratorio.R` (ejecución),
-`datos_14.tablas-resultados.xlsx` (números fuente de RQ1-RQ8), `datos_15.figuras/` (figuras
-finales), `datos_16.validacion-figuras-manuscrito.md` (clasificación esencial/tabla y
-numeración final ya aplicada), `datos_17.referencias-bibliograficas.md` (citas de software y
-del geojson).
-**Cifras verificadas el:** 26 de julio de 2026, con semilla fija (`set.seed(20260726)`) para que
-los p-valores simulados de Fisher sean reproducibles byte a byte, no solo aproximados —
-confirmado corriendo el script dos veces y comparando el resultado exacto.
-**Decisión sobre el MCA (ya integrada):** el equipo acordó incluirlo como **panorama
-exploratorio al inicio de Resultados**, antes de RQ1 — no como prueba confirmatoria adicional,
-sino como introducción visual de conjunto, coherente con (no redundante de) la prueba
-confirmatoria de RQ7. Se recalculó contra los datos actuales del repositorio (no se reciclaron
-números de una iteración anterior).
+**Estado de este documento:** primera versión completa de estas tres secciones, para revisión del
+equipo antes de integrarse al documento de Word del manuscrito. Formato de entrega final (Times
+New Roman 12, interlineado 1.5, encabezados 16/14 pts centrados en negritas, figuras/tablas
+numeradas con título arriba y fuente abajo) se aplica al pasar este texto al documento del
+manuscrito — ver checklist en `01_Normas_Editoriales_RIDE_Guia_Cumplimiento.md`, sección 17.
+**Basado en:** `datos_11.plan-analisis-datos.md` (diseño; revisado el 27-jul-2026, sin cambios
+necesarios), `datos_12.analisis-descriptivo.R` / `datos_13.mapa-entidades.R` /
+`datos_19.mca-exploratorio.R` (ejecución), `datos_14.tablas-resultados.xlsx` (números fuente de
+RQ1-RQ8), `datos_15.figuras/` (figuras finales), `datos_16.validacion-figuras-manuscrito.md`
+(clasificación esencial/tabla, numeración final, y validación editorial RIDE ya aprobada),
+`datos_17.referencias-bibliograficas.md` (citas de software y del geojson).
+**Cifras verificadas el:** 27 de julio de 2026, con semilla fija (`set.seed(20260726)`) para que
+los p-valores simulados de Fisher sean reproducibles byte a byte — confirmado corriendo el
+pipeline completo dos veces y comparando el resultado exacto.
+**MCA:** integrado como panorama exploratorio al inicio de Resultados, antes de RQ1 — no como
+prueba confirmatoria adicional, sino como introducción visual de conjunto, coherente con (no
+redundante de) la prueba confirmatoria de RQ7.
+**Pendiente antes de la versión para envío:** la sección de Discusión señala, en corchetes,
+los puntos donde se necesita una referencia bibliográfica verificada de un estudio comparable
+(demanda de posgrado, movilidad estudiantil, oferta educativa regional). No se inventó ninguna
+cita para esta versión — el equipo debe completar esas referencias con fuentes primarias reales
+antes del envío, siguiendo el mismo criterio de integridad de citas ya aplicado en el resto del
+proyecto (ver `datos_17.referencias-bibliograficas.md`).
 
 ---
 
@@ -340,33 +344,106 @@ o, en un caso, fuera del país.
 
 ---
 
-## Nota para el equipo (no forma parte del texto del manuscrito)
+# Discusión
 
-- Todas las cifras de esta sección son reproducibles ejecutando, en orden,
-  `datos_03.limpieza-datos.R` → `datos_12.analisis-descriptivo.R` → `datos_13.mapa-entidades.R`
-  → `datos_19.mca-exploratorio.R` sobre el repositorio publicado (el orden entre `datos_12`,
-  `datos_13` y `datos_19` ya no importa para los pies de figura — ver nota de robustez más
-  abajo — pero `datos_19` sí necesita que `datos_03` haya corrido antes). El p-valor de Fisher
-  es idéntico entre corridas gracias a la semilla fija (antes variaba ligeramente por la
-  simulación Monte Carlo sin semilla — se corrigió antes de fijar estos números en el texto).
-- Los números de figura y tabla ya corresponden a la numeración **final** propuesta en
-  `datos_16.validacion-figuras-manuscrito.md` (9 figuras esenciales, incluidas las 2 del MCA
-  exploratorio al inicio; 2 tablas nuevas más la de perfil sociodemográfico). El archivo
-  `pies-de-figura.md` sigue mostrando las 17 figuras con su numeración de generación (correcto
-  mientras conviven en el repositorio); el texto ya renumerado y listo para pegar en Word está
-  en la sección 7 de `datos_16`.
-- **Corrección de robustez aplicada hoy:** `datos_12.analisis-descriptivo.R` sobrescribía todo
-  `pies-de-figura.md` sin preservar lo que `datos_13`/`datos_19` ya hubieran escrito. Los tres
-  scripts ahora usan un esquema de bloques con marcadores que garantiza el orden final
-  (MCA → datos_12 → mapas) sin importar en qué orden se ejecuten, y sin duplicar ni perder
-  contenido — verificado corriendo `datos_12` una segunda vez después de los otros dos.
-- Sección de Discusión: **no** incluida en este borrador (se pidió expresamente Métodos y
-  Resultados). Los apuntes interpretativos dentro de Resultados son mínimos, siguiendo el
-  criterio conservador ya documentado en la guía de cumplimiento editorial de RIDE (reportar
-  resultados con una discusión robusta en su propio apartado, no fusionados).
-- **MCA integrado** (26-jul-2026): recalculado contra los datos actuales (no reciclado de una
-  iteración anterior), corrigiendo dos problemas reales encontrados en el script original
-  compartido por el equipo — falta de `Sys.setlocale("LC_ALL","C.UTF-8")` (causaba advertencias
-  de codificación y un error de parseo) y una dependencia no utilizada (`factoextra`). Se
-  presenta como panorama exploratorio al inicio de Resultados, explícitamente no confirmatorio
-  (17.4 % de inercia acumulada en las 2 dimensiones mostradas).
+Esta sección interpreta los hallazgos ya presentados en Resultados, responde a las preguntas de
+investigación planteadas en el plan de análisis, compara los resultados principales con
+literatura comparable cuando fue posible verificarla, y analiza las limitaciones del estudio.
+No se repiten aquí los datos ni los estadísticos ya reportados; se hace referencia a ellos de
+forma conceptual, remitiendo a la figura o tabla correspondiente.
+
+## Sobre la magnitud y la coherencia del interés declarado (RQ1, RQ7)
+
+El hallazgo más relevante para justificar la apertura del programa no es un solo dato aislado,
+sino la combinación de dos resultados independientes entre sí: una proporción alta de interés
+general (Figura 3), y una asociación estadísticamente significativa entre la línea de doctorado
+elegida y el área de la maestría previa de quienes respondieron (Figura 7). Que ambos resultados
+apunten en la misma dirección —interés amplio y, además, informado por la trayectoria
+académica— reduce la probabilidad de que el interés declarado sea aspiracional o producto de
+deseabilidad social hacia el cuestionario, un riesgo inherente a cualquier consulta de demanda
+autoadministrada. El panorama exploratorio (Figuras 1 y 2) es consistente con esta lectura,
+aunque —como se señaló en Resultados— resume solo una fracción modesta de la variabilidad total
+y no debe leerse como evidencia adicional por sí mismo.
+
+[Cita pendiente de verificar: estudios sobre coherencia entre formación previa e intención de
+continuar estudios de posgrado, para contrastar si la magnitud de la asociación encontrada aquí
+(V de Cramér = 0.417) es comparable a la reportada en otros contextos educativos.]
+
+## Sobre el diseño curricular y el perfil de quienes están interesados (RQ2, RQ3, RQ4)
+
+La concentración de más de la mitad del interés en una sola línea curricular (Figura 4) es un
+insumo directo para decidir con qué oferta iniciar el programa, más que para diseñar desde el
+principio una oferta con múltiples líneas de igual peso. El perfil de quienes están interesados
+—mayoritariamente mujeres, en el rango de edad típico de quienes ya concluyeron una maestría
+recientemente, y con una motivación dominante hacia la investigación por encima de la docencia o
+la aplicación en campo (Tabla 1, Figura 5)— sugiere que el público más receptivo para una
+primera convocatoria coincide con el perfil de egreso reciente de maestría, más que con
+profesionales ya consolidados en otras trayectorias.
+
+Las tres respuestas de texto libre que no encajaron en las categorías de motivación
+predefinidas —interés en el sector privado antes que en el ámbito académico, cercanía a la
+jubilación sin proyección laboral futura, y ausencia de una motivación adicional declarada—
+matizan ese perfil dominante: aunque minoritarias, muestran que no todas las personas
+interesadas buscan necesariamente insertarse en una trayectoria académica convencional, algo que
+conviene tener presente al diseñar el perfil de egreso para no excluir por diseño a ese segmento
+minoritario.
+
+## Sobre la planeación de cohortes y la modalidad (RQ5, RQ6, RQ8)
+
+Casi tres cuartas partes de las personas interesadas estarían en condición de iniciar dentro de
+los primeros dos años (Figura 6), lo que da un margen razonable para planear una primera
+convocatoria sin necesidad de que el programa esté listo de inmediato. Sin embargo, la
+situación laboral **no mostró una asociación estadísticamente significativa** ni con el plazo de
+inicio ni con la motivación declarada (Tabla 2) — es decir, no se encontró evidencia, en esta
+muestra, de que las personas empleadas o con negocio propio pospongan sistemáticamente su
+inicio, o de que declaren una motivación distinta a quienes solo estudian. Este es un hallazgo
+que **no confirma** una expectativa razonable de que la carga laboral condicionara la
+disponibilidad de tiempo, y se reporta así, sin forzar una interpretación causal que los datos
+no respaldan; los tamaños de efecto pequeños encontrados (Tabla 2) tampoco permiten descartar
+por completo una asociación real que un estudio con mayor n pudiera detectar.
+
+La muy alta permanencia geográfica encontrada (82 % permanece en la misma entidad donde cursó la
+maestría; Figuras 8 y 9) es, junto con la concentración temporal de RQ5, el hallazgo con
+implicación más directa para decidir la modalidad del programa: una oferta presencial
+concentrada regionalmente alcanzaría a la gran mayoría de quienes están interesados, mientras
+que una modalidad híbrida sería necesaria específicamente para la minoría dispersa en otras
+entidades o, en un caso, residente fuera del país.
+
+[Cita pendiente de verificar: literatura sobre movilidad estudiantil de posgrado en México y su
+relación con la modalidad (presencial/híbrida) de programas doctorales regionales, para
+contextualizar si un 82 % de permanencia es alto, típico o bajo frente a otros programas
+similares.]
+
+## Limitaciones del estudio
+
+- **Muestreo no probabilístico.** Como se declaró en Materiales y Métodos, los resultados
+  caracterizan a quienes respondieron el cuestionario, no constituyen una estimación
+  poblacional con el rigor de una muestra probabilística. Los intervalos de confianza de Wilson
+  reportados deben leerse como una medida de precisión muestral, no como un margen de error
+  poblacional generalizable a todas las personas potencialmente interesadas en la región.
+- **Diseño transversal, un solo corte temporal.** El cuestionario se aplicó en un periodo de
+  poco más de un mes (abril-mayo de 2024); no permite observar si el interés declarado se
+  sostiene en el tiempo o si respondió a un contexto coyuntural de ese periodo.
+- **Sesgo de autoselección propio de cuestionarios de demanda.** Quienes ya tenían algún interés
+  previo en el tema son, plausiblemente, más propensos a haber respondido, lo que puede inflar
+  la proporción de interés general (RQ1) respecto de la población completa a la que se buscó
+  llegar.
+- **Celdas dispersas en las pruebas de asociación de RQ6.** Hasta 76 % de las celdas esperadas
+  por debajo de 5 en la tabla más dispersa; aunque se usó la prueba de Fisher exacta con
+  simulación Monte Carlo específicamente para manejar esta situación (en vez de la
+  chi-cuadrada clásica, menos apropiada aquí), el poder estadístico para detectar asociaciones
+  pequeñas en subgrupos con pocos casos sigue siendo limitado.
+- **El panorama exploratorio (MCA) resume solo 17.4 % de la inercia total.** Se presentó de
+  forma deliberadamente separada de los hallazgos confirmatorios, precisamente para no atribuirle
+  un peso probatorio que no tiene; cualquier lectura de las Figuras 1 y 2 debe mantener esa
+  salvedad.
+- **Alcance institucional y geográfico del levantamiento.** El cuestionario se difundió desde una
+  institución y una red de contactos específicas; la composición geográfica de quienes
+  respondieron (concentrada en unas pocas entidades, Figuras 8 y 9) refleja en parte el alcance
+  de esa difusión, no necesariamente la distribución real del interés potencial en el país.
+
+[Cita pendiente de verificar: guías metodológicas sobre limitaciones típicas de estudios de
+demanda educativa con muestreo no probabilístico, para enmarcar estas limitaciones dentro de
+prácticas ya documentadas en el campo, en vez de presentarlas solo como limitaciones ad hoc de
+este estudio particular.]
+

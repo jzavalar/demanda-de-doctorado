@@ -155,6 +155,29 @@ coord_mca$en_zoom <- coord_mca$dim1 >= zoom_xlim[1] & coord_mca$dim1 <= zoom_xli
                      coord_mca$dim2 >= zoom_ylim[1] & coord_mca$dim2 <= zoom_ylim[2]
 zoom_data <- coord_mca[coord_mca$en_zoom, ]
 
+# Empuje vertical inicial para las etiquetas del panel de detalle (Figura 2):
+# varias categorias caen muy cerca de la linea horizontal de referencia
+# (Dimension 2 = 0), lo que hacia que sus etiquetas de texto quedaran
+# superpuestas justo sobre esa linea, dificultando la lectura. Se calcula un
+# "nudge" vertical previo al repel de ggrepel: mientras mas cerca este una
+# categoria de la linea (|dim2| pequeno), mayor el empuje en la direccion en
+# la que ya se encuentra (arriba si dim2 >= 0, abajo si dim2 < 0), para
+# garantizar una brecha minima antes de que el algoritmo de repulsion
+# reacomode las etiquetas entre si.
+brecha_minima <- 0.16
+zoom_data$nudge_y_eje <- ifelse(
+  zoom_data$dim2 >= 0,
+  pmax(0, brecha_minima - zoom_data$dim2),
+  -pmax(0, brecha_minima + zoom_data$dim2)
+)
+
+# Ajuste puntual: "26 a 30" (dim2 = 0.039, casi sobre la linea) queda muy
+# cerca de "Masculino" (dim2 = 0.093) al empujarse ambas hacia arriba por la
+# regla general de arriba, generando un cumulo de etiquetas. Se solicito
+# moverla hacia ABAJO de la linea horizontal en su lugar, lo que ademas la
+# separa de "Masculino" y despeja esa zona del grafico.
+zoom_data$nudge_y_eje[zoom_data$categoria == "26 a 30"] <- -brecha_minima
+
 cat("Categorías en el panel de detalle (zoom):", nrow(zoom_data), "de", nrow(coord_mca), "\n")
 
 fx <- range(coord_mca$dim1); fy <- range(coord_mca$dim2)
@@ -202,6 +225,13 @@ set.seed(20260726)
 # fuente van como texto de Word, en pies-de-figura.md), igual que el resto de
 # las figuras de este repositorio.
 # ------------------------------------------------------------------------------
+datos_fuera_zoom <- coord_mca[!coord_mca$en_zoom, ]
+
+# Ajuste puntual solicitado (27-jul-2026): mover la etiqueta "Alimentos" 0.2
+# unidades hacia la derecha en la escala de Dimension 1 (vista general,
+# Figura 1), para separarla mejor del resto de las etiquetas cercanas.
+datos_fuera_zoom$nudge_x_manual <- ifelse(datos_fuera_zoom$categoria == "Alimentos", 0.2, 0)
+
 panel_a <- ggplot2::ggplot(coord_mca, ggplot2::aes(x = dim1, y = dim2)) +
   ggplot2::geom_vline(xintercept = 0, linetype = "dashed", color = "gray50", linewidth = 0.6) +
   ggplot2::geom_hline(yintercept = 0, linetype = "dashed", color = "gray50", linewidth = 0.6) +
@@ -214,9 +244,10 @@ panel_a <- ggplot2::ggplot(coord_mca, ggplot2::aes(x = dim1, y = dim2)) +
                     size = 3, fontface = "italic", color = "gray30", family = "Times") +
   ggplot2::geom_point(ggplot2::aes(color = contrib_total, shape = variable), size = 2.6, alpha = 0.9) +
   ggrepel::geom_text_repel(
-    data = coord_mca[!coord_mca$en_zoom, ],
+    data = datos_fuera_zoom,
     ggplot2::aes(label = categoria, color = contrib_total),
     size = 3.3, family = "Times",
+    nudge_x = datos_fuera_zoom$nudge_x_manual,
     max.overlaps = Inf, max.time = 3, max.iter = 20000,
     box.padding = 0.45, point.padding = 0.35, force = 3, force_pull = 0.6,
     direction = "both", segment.color = "gray55", segment.size = 0.3,
@@ -243,6 +274,7 @@ panel_b <- ggplot2::ggplot(zoom_data, ggplot2::aes(x = dim1, y = dim2)) +
   ggrepel::geom_text_repel(
     ggplot2::aes(label = categoria, color = contrib_total),
     size = 3.4, family = "Times",
+    nudge_y = zoom_data$nudge_y_eje,
     max.overlaps = Inf, max.time = 4, max.iter = 30000,
     box.padding = 0.55, point.padding = 0.35, force = 4, force_pull = 0.4,
     direction = "both", segment.color = "gray55", segment.size = 0.3,
