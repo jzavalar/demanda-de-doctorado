@@ -1,0 +1,433 @@
+==============================================================================
+REPORTE CANÓNICO DE CIFRAS
+Demanda potencial de un Doctorado en Ciencias -- Colegio de Postgraduados
+==============================================================================
+Fecha de ejecución : 2026-07-27 20:01:41 
+Versión de R       : R version 4.5.3 (2026-03-11) 
+Plataforma         : x86_64-redhat-linux-gnu 
+Réplicas MC        : 200000 (RQ6-RQ7) / 50000 (RQ8)
+Semilla base       : 20260726 
+Respuestas totales : 113 
+Interesados        : 100 
+
+==============================================================================
+RQ1 -- MAGNITUD DEL INTERÉS DECLARADO 
+==============================================================================
+
+Interés declarado 'Sí': 100 de 113 = 88.5%
+   IC 95% Wilson          : [81.31%, 93.15%]
+   IC 95% Clopper-Pearson : [81.13%, 93.73%]  <- el reportado en la versión dictaminada
+
+   NOTA: elegir uno de los dos para el manuscrito y declararlo en Métodos.
+
+==============================================================================
+UNIVARIADOS -- CONCILIACIÓN DE DENOMINADORES 
+==============================================================================
+
+Cada variable se reporta dos veces: sobre las 113 respuestas (denominador de
+la versión dictaminada) y sobre las 100 personas interesadas (denominador del
+reanálisis). La diferencia entre ambas columnas es la conciliación.
+
+------------------------------------------------------------------------------
+
+[base 113] RQ2 -- Línea de doctorado de interés
+   categorías: 8 | respuestas válidas: 100 | base del %: 113
+     Manejo y Aprovechamiento del Paisaje Rural       55    48.7%
+     Desarrollo del Paisaje Rural                     17    15.0%
+     Paisaje y Turismo Rural                          17    15.0%
+     Desarrollo rural                                  6     5.3%
+     Desarrollo Regional                               2     1.8%
+     Energías                                         1     0.9%
+     Sociología                                       1     0.9%
+     Urbanismo y Relaciones de Poder                   1     0.9%
+
+[base 100] RQ2 -- Línea de doctorado de interés
+   categorías: 8 | respuestas válidas: 100 | base del %: 100
+     Manejo y Aprovechamiento del Paisaje Rural       55    55.0%
+     Desarrollo del Paisaje Rural                     17    17.0%
+     Paisaje y Turismo Rural                          17    17.0%
+     Desarrollo rural                                  6     6.0%
+     Desarrollo Regional                               2     2.0%
+     Energías                                         1     1.0%
+     Sociología                                       1     1.0%
+     Urbanismo y Relaciones de Poder                   1     1.0%
+
+------------------------------------------------------------------------------
+
+[base 113] Género
+   categorías: 2 | respuestas válidas: 113 | base del %: 113
+     Femenino                                         66    58.4%
+     Masculino                                        47    41.6%
+
+[base 100] Género
+   categorías: 2 | respuestas válidas: 100 | base del %: 100
+     Femenino                                         59    59.0%
+     Masculino                                        41    41.0%
+
+------------------------------------------------------------------------------
+
+[base 113] Edad (rangos)
+   categorías: 9 | respuestas válidas: 113 | base del %: 113
+     26 a 30                                          38    33.6%
+     31 a 35                                          24    21.2%
+     36 a 40                                          12    10.6%
+     51 a 55                                          11     9.7%
+     21 a 25                                           8     7.1%
+     41 a 45                                           7     6.2%
+     46 a 50                                           7     6.2%
+     56 a 60                                           4     3.5%
+     61 o más                                         2     1.8%
+
+[base 100] Edad (rangos)
+   categorías: 8 | respuestas válidas: 100 | base del %: 100
+     26 a 30                                          34    34.0%
+     31 a 35                                          23    23.0%
+     36 a 40                                          12    12.0%
+     51 a 55                                           8     8.0%
+     46 a 50                                           7     7.0%
+     21 a 25                                           6     6.0%
+     41 a 45                                           6     6.0%
+     56 a 60                                           4     4.0%
+
+------------------------------------------------------------------------------
+
+[base 113] Área de la maestría
+   categorías: 5 | respuestas válidas: 113 | base del %: 113
+     Social                                           53    46.9%
+     Agronómica                                      32    28.3%
+     Otras                                            22    19.5%
+     Economía                                         4     3.5%
+     Alimentos                                         2     1.8%
+
+[base 100] Área de la maestría
+   categorías: 5 | respuestas válidas: 100 | base del %: 100
+     Social                                           49    49.0%
+     Agronómica                                      28    28.0%
+     Otras                                            18    18.0%
+     Economía                                         3     3.0%
+     Alimentos                                         2     2.0%
+
+------------------------------------------------------------------------------
+
+[base 113] Situación laboral
+   categorías: 5 | respuestas válidas: 111 | base del %: 113
+     Solo estudia                                     38    33.6%
+     Docente                                          24    21.2%
+     Trabaja y estudia                                23    20.4%
+     Empleado                                         21    18.6%
+     Negocio propio                                    5     4.4%
+
+[base 100] Situación laboral
+   categorías: 5 | respuestas válidas: 98 | base del %: 100
+     Solo estudia                                     34    34.0%
+     Docente                                          21    21.0%
+     Empleado                                         19    19.0%
+     Trabaja y estudia                                19    19.0%
+     Negocio propio                                    5     5.0%
+
+------------------------------------------------------------------------------
+
+[base 113] RQ4 -- Motivación principal
+   categorías: 4 | respuestas válidas: 113 | base del %: 113
+     Investigación                                   61    54.0%
+     Docencia                                         31    27.4%
+     Aplicación en campo                             18    15.9%
+     Otro                                              3     2.7%
+
+[base 100] RQ4 -- Motivación principal
+   categorías: 4 | respuestas válidas: 100 | base del %: 100
+     Investigación                                   53    53.0%
+     Docencia                                         30    30.0%
+     Aplicación en campo                             16    16.0%
+     Otro                                              1     1.0%
+
+------------------------------------------------------------------------------
+
+[base 113] RQ5 -- Plazo estimado para iniciar
+   categorías: 5 | respuestas válidas: 113 | base del %: 113
+     En 1 año                                        60    53.1%
+     Indefinido                                       24    21.2%
+     En 2 años                                       19    16.8%
+     En 3 años                                        9     8.0%
+     En 5 años                                        1     0.9%
+
+[base 100] RQ5 -- Plazo estimado para iniciar
+   categorías: 5 | respuestas válidas: 100 | base del %: 100
+     En 1 año                                        55    55.0%
+     Indefinido                                       18    18.0%
+     En 2 años                                       17    17.0%
+     En 3 años                                        9     9.0%
+     En 5 años                                        1     1.0%
+
+==============================================================================
+TABLA 1 -- PERFIL SOCIODEMOGRÁFICO (base: 100 interesados) 
+==============================================================================
+
+   genero
+   categorías: 2 | respuestas válidas: 100 | base del %: 100
+     Femenino                                         59    59.0%
+     Masculino                                        41    41.0%
+
+   edad
+   categorías: 8 | respuestas válidas: 100 | base del %: 100
+     26 a 30                                          34    34.0%
+     31 a 35                                          23    23.0%
+     36 a 40                                          12    12.0%
+     51 a 55                                           8     8.0%
+     46 a 50                                           7     7.0%
+     21 a 25                                           6     6.0%
+     41 a 45                                           6     6.0%
+     56 a 60                                           4     4.0%
+
+   area_maestria
+   categorías: 5 | respuestas válidas: 100 | base del %: 100
+     Social                                           49    49.0%
+     Agronómica                                      28    28.0%
+     Otras                                            18    18.0%
+     Economía                                         3     3.0%
+     Alimentos                                         2     2.0%
+
+   situacion_laboral
+   categorías: 5 | respuestas válidas: 98 | base del %: 100
+     Solo estudia                                     34    34.0%
+     Docente                                          21    21.0%
+     Empleado                                         19    19.0%
+     Trabaja y estudia                                19    19.0%
+     Negocio propio                                    5     5.0%
+
+==============================================================================
+GÉNERO x INTERÉS (verificación de la cifra dictaminada p = 0.723) 
+==============================================================================
+
+           
+            No Si
+  Femenino   7 59
+  Masculino  6 41
+
+   chi-cuadrado sin corrección : p = 0.7228  <- reproduce el 0.723 dictaminado
+   chi-cuadrado con Yates      : p = 0.9557
+   Fisher exacto               : p = 0.7705  <- recomendado (tabla 2x2, celdas pequeñas)
+   V de Cramér                 : 0.0334
+
+   Conclusión idéntica con los tres métodos: no hay asociación.
+
+==============================================================================
+TENDENCIA POR EDAD -- VERIFICACIÓN DE LA AFIRMACIÓN DICTAMINADA 
+==============================================================================
+
+La versión dictaminada afirma que el interés AUMENTA con la edad.
+Este bloque somete esa afirmación a prueba.
+
+   Proporción de personas interesadas por rango de edad:
+     rango              n   sí % interés
+     21 a 25            8     6     75.0%
+     26 a 30           38    34     89.5%
+     31 a 35           24    23     95.8%
+     36 a 40           12    12    100.0%
+     41 a 45            7     6     85.7%
+     46 a 50            7     7    100.0%
+     51 a 55           11     8     72.7%
+     56 a 60            4     4    100.0%
+     61 o más          2     0      0.0%
+
+   Regresión logística (tendencia lineal):
+     beta = -0.03727   OR por cada 5 años = 0.8300   z = -1.4150   p = 0.1571
+     Spearman rho = -0.0467   p = 0.6234
+
+   INTERPRETACIÓN: si beta es negativo y p > 0.05, la afirmación de la versión
+   dictaminada no se sostiene, ni en dirección ni en significancia, y debe
+   sustituirse en Resultados y en Discusión.
+
+==============================================================================
+RQ6 y RQ7 -- PRUEBAS DE ASOCIACIÓN PRE-ESPECIFICADAS 
+==============================================================================
+
+RQ6a -- Situación laboral x Plazo de inicio
+   tabla                : 5 x 5,  n = 98
+   celdas esperadas < 5 : 76.0%  (regla de Cochran: Fisher)
+   chi-cuadrado obs.    : 17.3719  (gl = 16) [solo referencia descriptiva]
+   Fisher exacto simul. : p = 0.2894
+   error est. simulación: 0.00101   ->  decimales defendibles: 2
+   réplicas / semilla   : B = 200000 / set.seed(20260727)
+   V de Cramér          : 0.2105
+
+RQ6b -- Situación laboral x Motivación
+   tabla                : 5 x 4,  n = 98
+   celdas esperadas < 5 : 55.0%  (regla de Cochran: Fisher)
+   chi-cuadrado obs.    : 16.9776  (gl = 12) [solo referencia descriptiva]
+   Fisher exacto simul. : p = 0.0788
+   error est. simulación: 0.00060   ->  decimales defendibles: 2
+   réplicas / semilla   : B = 200000 / set.seed(20260728)
+   V de Cramér          : 0.2403
+
+RQ7 -- Área de la maestría x Línea de doctorado
+   tabla                : 5 x 8,  n = 100
+   celdas esperadas < 5 : 87.5%  (regla de Cochran: Fisher)
+   chi-cuadrado obs.    : 69.4985  (gl = 28) [solo referencia descriptiva]
+   Fisher exacto simul. : p = 0.0341
+   error est. simulación: 0.00041   ->  decimales defendibles: 3
+   réplicas / semilla   : B = 200000 / set.seed(20260729)
+   V de Cramér          : 0.4168
+
+   Tabla de contingencia de RQ7 (es la única asociación significativa):
+
+            
+             Desarrollo del Paisaje Rural Desarrollo Regional
+  Agronómica                            4                   0
+  Alimentos                             0                   0
+  Economía                              1                   1
+  Otras                                 5                   0
+  Social                                7                   1
+            
+             Desarrollo rural Energías
+  Agronómica                1        0
+  Alimentos                 0        0
+  Economía                  0        0
+  Otras                     0        1
+  Social                    5        0
+            
+             Manejo y Aprovechamiento del Paisaje Rural
+  Agronómica                                         15
+  Alimentos                                           2
+  Economía                                            0
+  Otras                                              10
+  Social                                             28
+            
+             Paisaje y Turismo Rural Sociología
+  Agronómica                       8          0
+  Alimentos                        0          0
+  Economía                         0          0
+  Otras                            1          1
+  Social                           8          0
+            
+             Urbanismo y Relaciones de Poder
+  Agronómica                               0
+  Alimentos                                0
+  Economía                                 1
+  Otras                                    0
+  Social                                   0
+
+==============================================================================
+RQ8 -- MOVILIDAD GEOGRÁFICA 
+==============================================================================
+
+Permanece en la misma entidad (estudios = residencia): 82 de 100 = 82.0%
+   IC 95% Wilson          : [73.33%, 88.30%]
+   IC 95% Clopper-Pearson : [73.05%, 88.97%]
+
+   Entidades distintas -- estudios: 17 | residencia: 24
+
+   (la prueba sobre la tabla completa puede tardar algunos minutos)
+
+RQ8 -- Entidad de estudios x Entidad de residencia
+   tabla                : 17 x 24,  n = 100
+   celdas esperadas < 5 : 100.0%  (regla de Cochran: Fisher)
+   chi-cuadrado obs.    : 1267.4061  (gl = 368) [solo referencia descriptiva]
+   Fisher exacto simul. : p = 0.0000
+   error est. simulación: 0.00002   ->  decimales defendibles: 3
+   réplicas / semilla   : B = 50000 / set.seed(20260730)
+   V de Cramér          : 0.8900
+
+   ADVERTENCIA: con 100 % de celdas esperadas < 5, esta prueba se reporta
+   únicamente como respaldo del patrón diagonal, no como hallazgo autónomo.
+
+   Entidades de estudios (base 100 interesados):
+
+     entidad donde cursó la maestría
+   categorías: 17 | respuestas válidas: 100 | base del %: 100
+     Sonora                                           19    19.0%
+     Estado de México                                12    12.0%
+     Nuevo León                                      11    11.0%
+     Tabasco                                          10    10.0%
+     Puebla                                            8     8.0%
+     Michoacán                                        7     7.0%
+     Chiapas                                           6     6.0%
+     Jalisco                                           6     6.0%
+     Tlaxcala                                          6     6.0%
+     San Luis Potosí                                  4     4.0%
+     Sinaloa                                           4     4.0%
+     Chihuahua                                         2     2.0%
+     Baja California Sur                               1     1.0%
+     Colima                                            1     1.0%
+     Durango                                           1     1.0%
+     Hidalgo                                           1     1.0%
+     Veracruz                                          1     1.0%
+
+   Entidades de residencia (base 100 interesados):
+
+     entidad de residencia actual
+   categorías: 24 | respuestas válidas: 100 | base del %: 100
+     Sonora                                           19    19.0%
+     Nuevo León                                      12    12.0%
+     Estado de México                                 9     9.0%
+     Tabasco                                           9     9.0%
+     Chiapas                                           7     7.0%
+     Michoacán                                        7     7.0%
+     Tlaxcala                                          7     7.0%
+     Puebla                                            6     6.0%
+     Sinaloa                                           4     4.0%
+     Baja California Sur                               2     2.0%
+     Chihuahua                                         2     2.0%
+     Ciudad de México                                 2     2.0%
+     Coahuila                                          2     2.0%
+     Jalisco                                           2     2.0%
+     Aguascalientes                                    1     1.0%
+     Colima                                            1     1.0%
+     Durango                                           1     1.0%
+     Estados Unidos de América (residencia en el extranjero)    1     1.0%
+     Guanajuato                                        1     1.0%
+     Hidalgo                                           1     1.0%
+     Morelos                                           1     1.0%
+     Nayarit                                           1     1.0%
+     Querétaro                                        1     1.0%
+     San Luis Potosí                                  1     1.0%
+
+==============================================================================
+TEXTO LIBRE PRESERVADO ('Otro') 
+==============================================================================
+
+Respuestas conservadas íntegras: 3
+   - Sector privado 
+   - no tengo interés , estoy por jubilarme 
+   - Ninguno 
+
+==============================================================================
+ENTORNO DE EJECUCIÓN 
+==============================================================================
+
+R version 4.5.3 (2026-03-11)
+Platform: x86_64-redhat-linux-gnu
+Running under: Fedora Linux 43 (Workstation Edition)
+
+Matrix products: default
+BLAS/LAPACK: FlexiBLAS OPENBLAS-OPENMP;  LAPACK version 3.12.1
+
+locale:
+ [1] LC_CTYPE=C.UTF-8           LC_NUMERIC=C              
+ [3] LC_TIME=C.UTF-8            LC_COLLATE=C.UTF-8        
+ [5] LC_MONETARY=C.UTF-8        LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=es_MX.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=es_MX.UTF-8 LC_IDENTIFICATION=C       
+
+time zone: America/Mexico_City
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] stringi_1.8.7    openxlsx_4.2.8.1 writexl_1.5.4    dplyr_1.2.1     
+[5] stringr_1.6.0    readxl_1.5.0    
+
+loaded via a namespace (and not attached):
+ [1] R6_2.6.1          tidyselect_1.2.1  cellranger_1.1.0 
+ [4] magrittr_2.0.5    glue_1.8.1        tibble_3.3.1     
+ [7] pkgconfig_2.0.3   generics_0.1.4    lifecycle_1.0.5  
+[10] cli_3.6.6         zip_3.0.0         vctrs_0.7.3      
+[13] rsconnect_1.10.1  withr_3.0.3       compiler_4.5.3   
+[16] rstudioapi_0.19.0 tools_4.5.3       pillar_1.11.1    
+[19] Rcpp_1.1.2        rlang_1.3.0      
+==============================================================================
+FIN DEL REPORTE
+==============================================================================
